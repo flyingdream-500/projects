@@ -14,14 +14,11 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!-- InputLayoutStyle style for select date-->
-    <style name="InputLayoutStyleBase" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <!-- InputLayoutStyle style with char counter for rus & eng fields-->
+    <style name="InputLayoutStyleFields" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/stroke</item>
         <item name="boxBackgroundColor">@color/white</item>
-    </style>
-
-    <!-- InputLayoutStyle style with char counter for name & surname fields-->
-    <style name="InputLayoutStyleFields" parent="InputLayoutStyleBase">
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">100</item>
     </style>

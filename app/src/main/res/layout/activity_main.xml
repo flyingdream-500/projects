@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,12 +28,12 @@
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="@id/end_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_name"
-        app:layout_constraintBottom_toTopOf="@id/layout_surname"
+        app:layout_constraintTop_toBottomOf="@id/layout_rus"
+        app:layout_constraintBottom_toTopOf="@id/layout_eng"
         android:src="@drawable/ic_double_arrow"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_name"
+        android:id="@+id/layout_rus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -43,20 +44,20 @@
         app:layout_constraintStart_toStartOf="@id/start_guideline"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/layout_surname">
+        app:layout_constraintBottom_toTopOf="@id/layout_eng">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_name"
+            android:id="@+id/input_rus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/InputEditTextStyle"
-            tools:text="@tools:sample/backgrounds/scenic"
+            tools:text="@tools:sample/full_names"
             android:digits="абвгдеёжзийклмнопрстуфхцчшщъыьэюя\n АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_surname"
+        android:id="@+id/layout_eng"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -66,14 +67,14 @@
         app:layout_constraintWidth_default="spread"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_name">
+        app:layout_constraintTop_toBottomOf="@id/layout_rus">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_surname"
+            android:id="@+id/input_eng"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/InputEditTextStyle"
-            tools:text="@tools:sample/backgrounds/scenic"
+            tools:text="@tools:sample/full_names"
             android:digits="abcdefghijklmnopqrstuvwxyz\n ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     </com.google.android.material.textfield.TextInputLayout>

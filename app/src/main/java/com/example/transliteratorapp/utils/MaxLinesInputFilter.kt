@@ -9,10 +9,7 @@ import android.text.InputFilter
  * Filter for controlling maximum new lines in EditText.
  */
 class MaxLinesInputFilter(
-    /**
-     * @return the maximum lines enforced by this input filter
-     */
-    val max: Int
+    private val max: Int
 ) : InputFilter {
 
     override fun filter(
@@ -34,13 +31,6 @@ class MaxLinesInputFilter(
     }
 
     companion object {
-        /**
-         * Counts the number occurrences of the given char.
-         *
-         * @param string the string
-         * @param charAppearance the char
-         * @return number of occurrences of the char
-         */
         fun countOccurrences(string: String, charAppearance: Char): Int {
             var count = 0
             for (i in 0 until string.length) {

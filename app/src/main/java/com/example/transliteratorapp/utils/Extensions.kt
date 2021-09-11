@@ -55,7 +55,7 @@ object Extensions {
         this
             .animate()
             .rotationBy(180f)
-            .setDuration(300)
+            .setDuration(200)
             .setInterpolator(LinearInterpolator())
             .start()
     }

@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun initEngInput() {
         input_eng.apply {
             setOnFocusChangeListener { _, hasFocus ->
-                if (hasFocus) {
-                    firstStart = false
+                if (!firstStart && hasFocus) {
                     iv_direct.rotate()
                 }
             }

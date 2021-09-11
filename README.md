@@ -1,5 +1,9 @@
-# android-school
-Android School Lessons: 
-* [First Lesson App](https://github.com/flyingdream-500/android-school/tree/main/FirstLessonApp)
-* [Second Lesson Koans](https://github.com/flyingdream-500/android-school/tree/main/Kotlin%20Koans)
+# Transliterator App
+## Превью
+<p align="center">
+<img src="data/1.gif" />
+<img src="data/2.gif" />
+</p>
 
+## Описание
+Приложение динамически конвертирует текст на другой язык.

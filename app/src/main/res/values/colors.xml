@@ -8,10 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#E30000</color>
+    <color name="golden">#DAA520</color>
+    <color name="blue">#2698CA</color>
+    <color name="grey">#676767</color>
 
     <!--gradient-->
-    <color name="start_gradient">#F2A007</color>
-    <color name="center_gradient">#DA6D0D</color>
-    <color name="end_gradient">#BF1F1F</color>
+    <color name="start_gradient">#012E40</color>
+    <color name="center_gradient">#011F26</color>
+    <color name="end_gradient">#F2B544</color>
+
+    <!--button color-->
+    <color name="beige">#F5F5DC</color>
+
+    <!--box color-->
+    <color name="violet">#BC13EA</color>
 
 </resources>

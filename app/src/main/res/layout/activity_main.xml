@@ -1,19 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/iv_robot"
+    <TextView
+        android:id="@+id/robot_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="0"
+        style="@style/ButtonStyle"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/robot_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/robot_counter"
+        app:layout_constraintTop_toTopOf="@id/robot_counter"
+        app:layout_constraintBottom_toBottomOf="@id/robot_counter"
+        android:src="@drawable/clip_robot"/>
+
+    <TextView
+        android:id="@+id/move_robot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/robot_image"
+        app:layout_constraintStart_toStartOf="@id/robot_image"
+        app:layout_constraintEnd_toEndOf="@id/robot_counter"
+        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:text="O"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/move_man"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/man_image"
+        app:layout_constraintStart_toStartOf="@id/man_image"
+        app:layout_constraintEnd_toEndOf="@id/man_counter"
+        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:text="@string/man"
+        android:layout_marginTop="20dp"/>
+
+     <TextView
+         android:id="@+id/man_counter"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/robot"
+         style="@style/ButtonStyle"
+         android:textColor="@color/white"
+         android:layout_margin="10dp"
+         app:layout_constraintStart_toEndOf="@id/man_image"
+         app:layout_constraintTop_toTopOf="@id/man_image"
+         app:layout_constraintBottom_toBottomOf="@id/man_image"
+         />
+
+     <ImageView
+         android:id="@+id/man_image"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:layout_marginEnd="10dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         android:src="@drawable/clip_man"/>
+
+   <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/clip_robot" />
+        android:background="@drawable/net_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:columnCount="3"
+        android:rowCount="3">
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn4"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn6"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn7"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn8"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btn9"
+            style="@style/ButtonStyle"
+            android:background="@drawable/app_background"
+            android:textColor="@color/white"
+            >
+        </Button>
+
+
+    </GridLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

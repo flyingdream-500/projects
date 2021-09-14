@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+
+    <string name="round_win">You won the battle but not the war</string>
+    <string name="round_lose">You lose the battle but not the war</string>
+    <string name="game_win">You won the game</string>
+    <string name="game_lose">You lose the game</string>
+    <string name="without_winner">Round over without winner</string>
+
+    <string name="new_game">New Game</string>
+    <string name="positive">OK</string>
+
+    <string name="man">X</string>
+    <string name="robot">O</string>
 </resources>

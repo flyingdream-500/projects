@@ -8,6 +8,10 @@ import com.example.tictactoe.interfaces.WinnerCheck
 import com.example.tictactoe.utils.Const.COL_COUNT
 import com.example.tictactoe.utils.Const.ROW_COUNT
 
+
+/**
+    Класс с полями и функциями игры, заполнение поля, выбор игрока, проверка победителя и т.д.
+ */
 class Game {
 
     private lateinit var players: Array<Player>
@@ -25,8 +29,8 @@ class Game {
     private var winnerChecks: Array<WinnerCheck>
 
     init {
-        field = Array(ROW_COUNT) { row ->
-            Array(COL_COUNT) { col ->
+        field = Array(ROW_COUNT) {
+            Array(COL_COUNT) {
                 Cell()
             }
         }
@@ -63,7 +67,12 @@ class Game {
         return true
     }
 
-    fun switchPlayers() {
+    fun reset() {
+        resetFields()
+        resetPlayers()
+    }
+
+    private fun switchPlayers() {
         currentPlayer = if (currentPlayer == players[0]) players[1] else players[0]
     }
 
@@ -75,12 +84,7 @@ class Game {
         setCurrentPlayer(players[0])
     }
 
-    fun reset() {
-        resetFields()
-        resetPlayers()
-    }
-
-    fun resetFields() {
+    private fun resetFields() {
         for (arr in field) {
             for (cell in arr) {
                 cell.player = null

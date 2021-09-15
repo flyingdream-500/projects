@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/app_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/clip_man.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/clip_robot.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/end_game_btn_selector.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/ic_app.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/ic_man_golden.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/ic_man_white.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/ic_robot_red.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/ic_robot_white.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/drawable/net_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/TicTacToe/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/StudioProjects/TicTacToe/app/src/main/res/drawable/app_background.xml" value="0.3828125" />
         <entry key="..\:/Users/Ildar/StudioProjects/TicTacToe/app/src/main/res/drawable/cell_selector.xml" value="0.3828125" />
         <entry key="..\:/Users/Ildar/StudioProjects/TicTacToe/app/src/main/res/drawable/clip_man.xml" value="0.3828125" />

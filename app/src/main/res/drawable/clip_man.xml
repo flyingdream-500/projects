@@ -7,7 +7,7 @@
         <clip
             android:clipOrientation="vertical"
             android:gravity="bottom"
-            android:drawable="@drawable/ic_man_golden">
+            android:drawable="@drawable/ic_man_blue">
         </clip>
     </item>
 

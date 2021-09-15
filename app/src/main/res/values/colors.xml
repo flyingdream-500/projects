@@ -12,15 +12,13 @@
     <color name="blue">#2698CA</color>
     <color name="grey">#676767</color>
 
-    <!--gradient-->
+    <!--background & cell gradient-->
     <color name="start_gradient">#012E40</color>
     <color name="center_gradient">#011F26</color>
     <color name="end_gradient">#F2B544</color>
-
-    <!--button color-->
-    <color name="beige">#F5F5DC</color>
-
-    <!--box color-->
-    <color name="violet">#BC13EA</color>
+    <!--cell`s net background gradient-->
+    <color name="net_start_gradient">#677E52</color>
+    <color name="net_center_gradient">#F6E8B1</color>
+    <color name="net_end_gradient">#89725B</color>
 
 </resources>

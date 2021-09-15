@@ -7,12 +7,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
 import androidx.lifecycle.MutableLiveData
 import com.example.tictactoe.dialog.EndGameDialog
 import com.example.tictactoe.dialog.EndRoundDialog
 import com.example.tictactoe.model.*
-import com.example.tictactoe.utils.Const
 import com.example.tictactoe.utils.Const.COL_COUNT
 import com.example.tictactoe.utils.Const.END_GAME_TAG
 import com.example.tictactoe.utils.Const.END_ROUND_TAG
@@ -41,9 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         observeCounter()
 
-
     }
 
+    /**
+        Наблюдение за счетчиком выигранных партий робота и человека
+     */
     private fun observeCounter() {
         manData.observe(this) {
             man_counter.text = it.count.toString()
@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+        Инициализация массива кнопок и добавление слушателей
+     */
     private fun initButtons(): Array<Array<Button>> {
         val btns = arrayOf(
             btn1,
@@ -69,8 +72,8 @@ class MainActivity : AppCompatActivity() {
             btn9
         )
         var i = 0
-        return Array(Const.ROW_COUNT) { row ->
-                Array(Const.COL_COUNT) { col ->
+        return Array(ROW_COUNT) { row ->
+                Array(COL_COUNT) { col ->
                     val b = btns[i++]
                     b.setOnClickListener(ButtonListener(row, col))
                     b
@@ -79,11 +82,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /**
+        Слушатель нажатия кнопки с последующей логикой проверки победителя
+        + ход компьютера с задержкой 1 сек
+     */
     inner class ButtonListener(private val x: Int, private val y: Int): View.OnClickListener {
         override fun onClick(view: View?) {
             val button = view as Button
             var player = game.getCurrentPlayer()
-            if (player?.name == "X") {
+
+            //Ход человека
+            if (player?.isMan() == true) {
+                //Ход человека
                 if (game.makeTurn(x, y)) {
                     button.text = player.name
                 }
@@ -99,18 +109,19 @@ class MainActivity : AppCompatActivity() {
                 move_robot.visible()
                 move_man.gone()
 
+                //Ход компьютера
                 Handler(Looper.getMainLooper()).postDelayed( {
                     player = game.getCurrentPlayer()
-                    if (player?.name == "O") {
+                    if (player?.isMan() == false) {
                         var b = false
-                        var xx = 0
-                        var yy = 0
+                        var row = 0
+                        var col = 0
                         while (!b) {
-                            xx = (0 until ROW_COUNT).random()
-                            yy = (0 until COL_COUNT).random()
-                            b = game.makeTurn(xx, yy)
+                            row = (0 until ROW_COUNT).random()
+                            col = (0 until COL_COUNT).random()
+                            b = game.makeTurn(row, col)
                         }
-                        buttons[xx][yy].text = player?.name
+                        buttons[row][col].text = player?.name
                         winner = game.checkWinner()
                         if (winner != null) {
                             gameOver(winner!!)
@@ -128,7 +139,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
+    /**
+        Конец игры или раунда с победителем, "окрашивание в те цвета, в которые  он себя окрасил",
+            показ диалогового окна с изображением(конец раунда) или с гифкой(конец игры)
+     */
     private fun gameOver(winner: Player) {
         val isMan = winner.isMan()
         if (isMan) {
@@ -158,12 +172,19 @@ class MainActivity : AppCompatActivity() {
         buttons.refresh()
 
     }
+
+    /**
+        Конец раунда без победителя
+     */
     private fun gameOver() {
         Toast.makeText(this, resources.getString(R.string.without_winner), Toast.LENGTH_SHORT).show()
         game.reset()
         buttons.refresh()
     }
 
+    /**
+        Очищение полей для начала новой игры
+     */
     private fun clearCount() {
         manData.value = Man(0, 0)
         robotData.value = Robot(0, 0)

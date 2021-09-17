@@ -17,10 +17,26 @@
         <entry key="..\:/Users/Ildar/AppleBasket/app/src/main/res/layout/apple_sun_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/AppleBasket/app/src/main/res/layout/basket_layout.xml" value="0.536" />
         <entry key="..\:/Users/Ildar/AppleBasket/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/apple_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/apple_name_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/apple_sum_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/basket_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/basket_name_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/ic_add.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/ic_app.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/ic_apple_eat.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/ic_delete_all.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/drawable/ic_put_apple.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/layout/apple_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/layout/apple_sum_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/layout/basket_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/AppleBasket/app/src/main/res/menu/main_menu.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

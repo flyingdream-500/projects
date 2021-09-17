@@ -1,35 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@drawable/basket_background"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@drawable/basket_background">
 
-    <TextView
-        android:id="@+id/basket_name"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/basket_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            tools:text="Basket #1"
+            android:background="@drawable/basket_name_background"
+            android:textColor="@color/weave_text"
+            />
+
+        <ImageView
+            android:id="@+id/put_apple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_put_apple"
+            android:contentDescription="@string/put_apple" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_apples"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:text="Basket #1"
-        android:background="@drawable/basket_name_background"
-        android:textColor="@color/weave_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/apple_layout"
+        />
 
-    <ImageView
-        android:id="@+id/iv_put_apple"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="20dp"
-        android:src="@drawable/ic_put_apple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_apples_sum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="1"
+        tools:listitem="@layout/apple_sum_layout"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

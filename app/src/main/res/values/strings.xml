@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">AppleBasket</string>
+
+    <string name="basket_name">Basket #%1$s</string>
+    <string name="apple_name">Apple #%1$s</string>
+    <string name="apple_sum">Apples sum: %1$s</string>
+
+    <string name="enough_eat">Харош</string>
+
+    <string name="add_basket">Add basket</string>
+    <string name="delete_all_baskets">Delete all baskets</string>
+    <string name="put_apple">Put apple</string>
+    <string name="eat_apple">Eat apple</string>
 </resources>

@@ -1,5 +1,14 @@
-# android-school
-Android School Lessons: 
-* [First Lesson App](https://github.com/flyingdream-500/android-school/tree/main/FirstLessonApp)
-* [Second Lesson Koans](https://github.com/flyingdream-500/android-school/tree/main/Kotlin%20Koans)
+# Converter App
+## Превью
+<p align="center">
+<img src="data/main.gif" />
+</p>
+
+## Описание
+**Конвертер** для преобразования различных единиц измерения с динамической сменой конвертируемых величин и их значений. 
+
+### Доступные категории: 
+- Длина и расстояние - метр, миллиметр, сантиметр, километр
+- Площадь - квадратный метр, квадратный миллиметр, квадратный сантиметр, квадратный километр
+- Объем - кубический метр, кубический миллиметр, кубический сантиметр, кубический километр
 

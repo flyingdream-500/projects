@@ -3,6 +3,7 @@ package com.example.speedometerview
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.core.graphics.scale
@@ -26,47 +27,58 @@ class SpeedometerView(
         style = Paint.Style.STROKE
         strokeWidth = 10f
         color = Color.RED
-        shader = LinearGradient(0f, 0f, 500f, 500f, Color.RED, Color.BLACK, Shader.TileMode.MIRROR)
+        shader = LinearGradient(0f, 0f, width.toFloat(), height.toFloat(), Color.RED, Color.BLACK, Shader.TileMode.MIRROR)
     }
 
     private var layer2Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = 30f
         //color = Color.RED
-        shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR )
+        shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.GRAY, Shader.TileMode.MIRROR )
     }
     private var layer3Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 5f
+        strokeWidth = 40f
+        color = Color.BLACK
+        //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR )
+    }
+    private var layer3aPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.STROKE
+        strokeWidth = 45f
         color = Color.WHITE
         //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR )
     }
 
-    private var layer4Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    private var layerBackgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
-        //strokeWidth = 5f
         color = Color.BLACK
         //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR )
     }
 
     private var layer5Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 40f
-        //color = Color.BLACK
+        strokeWidth = 100f
         shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
     }
 
     private var layer6Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 5f
+        strokeWidth = 2f
         color = Color.WHITE
         //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
     }
 
+    private var markPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.STROKE
+        strokeWidth = 10f
+        color = Color.RED
+        //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
+    }
+
+
     private var externalStrokeWidth = 10f
     private var externalStrokeColor = 0
 
-    private var max: Int
 
 
     private val backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -76,13 +88,18 @@ class SpeedometerView(
         style = Paint.Style.STROKE
     }
 
-    private val arcRect = RectF(0f, 0f, 900f, 900f)
+    private val arcRect = RectF(0f, 0f, 1000f, 1000f)
+
+
+    private var max: Int = 33
+    private var currentValue = 30
+    private val step = Math.PI / max
 
 
     init {
 
         amgBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.amg)
-        amgBitmap = amgBitmap.scale(300, 150, false)
+        amgBitmap = amgBitmap.scale(350, 120, false)
         val typedArray = context.theme.obtainStyledAttributes(
             attributeSet,
             R.styleable.SpeedometerView,
@@ -116,19 +133,69 @@ class SpeedometerView(
             height = width / normalAspect
         }
 
+        val arcRect = RectF(50f, 50f, width - 50f, height*2 - 50f)
+
         canvas?.apply {
-            translate(100f , 200f)
-            //scale(900f, 900f)
-            drawCircle(arcRect.centerX(), arcRect.centerY(), arcRect.centerX(), layer1Paint)
-            drawCircle(arcRect.centerX(), arcRect.centerY(), arcRect.centerX()-20, layer2Paint)
-            drawCircle(arcRect.centerX(), arcRect.centerY(), arcRect.centerX()-30, layer3Paint)
-            drawCircle(arcRect.centerX(), arcRect.centerY(), arcRect.centerX()-35, layer4Paint)
-            drawCircle(arcRect.centerX(), arcRect.centerY(), arcRect.centerX()-60, layer5Paint)
-            drawBitmap(amgBitmap, 280f, 270f, layer6Paint)
-            drawCircle(arcRect.centerX(), arcRect.centerY(), arcRect.centerX()-230, layer6Paint)
-            //drawArc(arcRect, TOP_START_ANGLE, FULL_CIRCLE_ANGLE / max * progress, false, foregroundPaint)
-            //drawTextProgress()
+            translate(0f , 100f)
+
+            //canvas.scale(width*1.1.toFloat(), height*0.9.toFloat())
+            //drawOval(0f,0f,height*2.toFloat(), width, layer5Paint)
+
+            val xp = width/2
+            val yp = height
+            val r = width/2
+
+            drawCircle(xp, yp, r, layerBackgroundPaint)
+            drawBitmap(amgBitmap, xp*0.65f, yp*0.65f, layer6Paint)
+            drawCircle(xp, yp, r/2, layer6Paint)
+            //drawCircle(xp, yp, r - layer5Paint.strokeWidth / 2, layer5Paint)
+            drawArc(arcRect, 60f, -300f, false, layer5Paint)
+            drawCircle(xp, yp, r - layer3aPaint.strokeWidth / 2, layer3aPaint)
+            drawCircle(xp, yp, r - layer3Paint.strokeWidth / 2, layer3Paint)
+            drawCircle(xp, yp, r - layer2Paint.strokeWidth / 2, layer2Paint)
+            drawCircle(xp, yp, r - layer1Paint.strokeWidth / 2, layer1Paint)
+            drawCircle(xp, yp, 50f, layer1Paint)
+
+
+            val maxValue = 10
+            val value = 25
+            val step = Math.PI/maxValue
+
+            for (i in 0 .. maxValue) {
+                val startX1 = xp*1f + xp * Math.cos(Math.PI + step*i).toFloat()
+                val startY1 = yp*1.1f + yp * Math.sin(Math.PI + step*i).toFloat()
+                val stopX1 = startX1*1.1f
+                val stopY1 = startY1*1.1f
+
+                drawLine(startX1, startY1, stopX1, stopY1, markPaint)
+            }
+
+            //drawLine(xp/2, yp*1.8f, xp/2 + 50f, yp*1.8f - 50f, markPaint)
+            //drawLine(xp, yp, xp + xp * Math.cos(30.0).toFloat(), yp * 2, markPaint)
+
+            /*val maxValue = 120
+            val value = 25
+
+            val scale = 0.9f
+
+            val step = Math.PI / maxValue
+            for (i in 0..maxValue) {
+                val x1 = xp + Math.cos(Math.PI - step * i).toFloat()
+                val y1 = yp + Math.sin(Math.PI - step * i).toFloat()
+                var x2: Float
+                var y2: Float
+                if (i % 20 == 0) {
+                    x2 = x1 * scale * 0.9f
+                    y2 = y1 * scale * 0.9f
+                } else {
+                    x2 = x1 * scale
+                    y2 = y1 * scale
+                }
+                canvas.drawLine(x1, y1, x2, y2, markPaint)
+            }*/
         }
+
+
     }
 
     fun configurePaint() {
@@ -140,7 +207,7 @@ class SpeedometerView(
     }
 
 
-    /*override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         //super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         var width = MeasureSpec.getSize(widthMeasureSpec)
@@ -161,5 +228,5 @@ class SpeedometerView(
             }
         }
         setMeasuredDimension(width, height)
-    }*/
+    }
 }

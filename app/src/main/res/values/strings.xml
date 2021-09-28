@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Drawing App</string>
+    <string name="reset">Reset</string>
+    <string name="redo">Redo</string>
+    <string name="undo">Undo</string>
+    <string name="brush">Brush</string>
+    <string name="line">Line</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="scale">Scale</string>
+    <string name="pick_color">Pick color</string>
+    <string name="color_picker_title">Pick the color</string>
+    <string name="color_picker_positive">Select</string>
+    <string name="color_picker_negative">Cancel</string>
+</resources>

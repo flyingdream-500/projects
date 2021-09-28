@@ -3,6 +3,7 @@ package com.example.drawingapp
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.ScaleGestureDetector
@@ -31,9 +32,6 @@ class DrawingView(context: Context, attributeSet: AttributeSet) : View(context, 
         color = DEFAULT_COLOR
         strokeWidth = DEFAULT_BRUSH_WIDTH
     }
-    //private var currentPath = arrayListOf<Path>()
-   // private var currentTouch = arrayListOf<PointF>()
-
 
 
     var currentDrawer = Drawer.BRUSH
@@ -87,14 +85,12 @@ class DrawingView(context: Context, attributeSet: AttributeSet) : View(context, 
                         },
                         currentPoint)
                     map.put(pointerId, sp)
-                    return true
                 }
                 ACTION_MOVE -> {
                     for (i in 0 until event.pointerCount) {
                     val id = event.getPointerId(i)
                     val c = map.get(id)
                         if (c != null) {
-
                         touchMove(event.getX(i), event.getY(i), c.path, c.point)
                         }
                     }
@@ -162,12 +158,14 @@ class DrawingView(context: Context, attributeSet: AttributeSet) : View(context, 
     }
 
     fun undo() {
+        Log.d("TAGG", "undo ${drawnPaths.size}")
         if (!drawnPaths.empty()) {
             redoPaths.push(drawnPaths.pop())
             invalidate()
         }
     }
     fun redo() {
+        Log.d("TAGG", "redo ${drawnPaths.size}")
         if (!redoPaths.empty()) {
             drawnPaths.push(redoPaths.pop())
             invalidate()

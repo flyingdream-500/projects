@@ -19,5 +19,5 @@
 ## P.S
 **Считай, уже неплохо [заработал](http://www.bolshoyvopros.ru/questions/2935200-v-chjom-osobennost-kartiny-njumana-svet-anny-pochemu-ocenili-v-106-mln.html)**
 <p align="left">
-<img src="data/ps_screen.jpg"  width="25%" height="25%" />
+<img src="data/ps_screen.webp"  width="25%" height="25%" />
 </p>

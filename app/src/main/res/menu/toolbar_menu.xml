@@ -18,6 +18,4 @@
         android:title="@string/reset"
         app:showAsAction="ifRoom"/>
 
-
-
 </menu>

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomView.apply {
             initBadger()
-            clickListener(binding.drawing)
+            clickListener(binding.drawingView)
         }
 
     }
@@ -32,9 +32,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         binding.apply {
             when (item.itemId) {
-                R.id.reset -> drawing.reset()
-                R.id.undo -> drawing.undo()
-                R.id.redo -> drawing.redo()
+                R.id.reset -> drawingView.reset()
+                R.id.undo -> drawingView.undo()
+                R.id.redo -> drawingView.redo()
             }
         }
         return true

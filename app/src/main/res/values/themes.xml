@@ -16,12 +16,13 @@
         <item name="android:drawablePadding">10dp</item>
     </style>
 
-    <!-- Размер текста в BNV в ActivityScreenshotRedactor -->
-    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+    <!-- Drawing tools BNV style -->
+    <style name="DrawBottomNavigationViewStyle">
         <item name="android:textSize">10sp</item>
+        <item name="itemIconTint">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="android:background">@color/black</item>
     </style>
-    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
-        <item name="android:textSize">10sp</item>
-    </style>
+    
 
 </resources>

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.scale
 
 class SpeedometerView(
@@ -58,7 +59,9 @@ class SpeedometerView(
     private var layer5Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = 100f
-        shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
+        //color = Color.WHITE
+        alpha = 255
+        shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.LTGRAY, Shader.TileMode.MIRROR )
     }
 
     private var layer6Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -71,7 +74,35 @@ class SpeedometerView(
     private var markPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = 10f
+        color = Color.WHITE
+        //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
+    }
+
+    private var doubleMarkPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.STROKE
+        strokeWidth = 20f
+        color = Color.WHITE
+        //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
+    }
+
+    private var textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        typeface = ResourcesCompat.getFont(this@SpeedometerView.context, R.font.enter_the_grid)
+        textSize = 60f
+        color = Color.WHITE
+        //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
+    }
+
+    private var arrowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL_AND_STROKE
+        strokeWidth = 10f
         color = Color.RED
+        //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
+    }
+
+    private var arrowPaint2 = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.STROKE
+        color = Color.WHITE
+        strokeWidth = 10f
         //shader = LinearGradient(0f, 0f, 500f, 500f, Color.BLACK, Color.DKGRAY, Shader.TileMode.CLAMP )
     }
 
@@ -133,20 +164,20 @@ class SpeedometerView(
             height = width / normalAspect
         }
 
-        val arcRect = RectF(50f, 50f, width - 50f, height*2 - 50f)
+        val arcRect = RectF(-width/2 + 50f, -height + 50f, width/2 - 50f, height - 50f)
 
         canvas?.apply {
-            translate(0f , 100f)
+            translate(width/2 , height)
 
             //canvas.scale(width*1.1.toFloat(), height*0.9.toFloat())
             //drawOval(0f,0f,height*2.toFloat(), width, layer5Paint)
 
-            val xp = width/2
-            val yp = height
+            val xp = 0f
+            val yp = 0f
             val r = width/2
 
             drawCircle(xp, yp, r, layerBackgroundPaint)
-            drawBitmap(amgBitmap, xp*0.65f, yp*0.65f, layer6Paint)
+            drawBitmap(amgBitmap, -width*0.17f, -height*0.4f, layer6Paint)
             drawCircle(xp, yp, r/2, layer6Paint)
             //drawCircle(xp, yp, r - layer5Paint.strokeWidth / 2, layer5Paint)
             drawArc(arcRect, 60f, -300f, false, layer5Paint)
@@ -157,45 +188,88 @@ class SpeedometerView(
             drawCircle(xp, yp, 50f, layer1Paint)
 
 
-            val maxValue = 10
+            val maxValue = 30
             val value = 25
-            val step = Math.PI/maxValue
+            val all = 5 * Math.PI / 3
+            val step = all/maxValue
+            val wdt = width/2 - 100f
+            val hgt = height - 100f
 
             for (i in 0 .. maxValue) {
-                val startX1 = xp*1f + xp * Math.cos(Math.PI + step*i).toFloat()
-                val startY1 = yp*1.1f + yp * Math.sin(Math.PI + step*i).toFloat()
-                val stopX1 = startX1*1.1f
-                val stopY1 = startY1*1.1f
+                val startX1 = 0f - wdt * Math.cos(all + step*i).toFloat()
+                val startY1 = 0f - hgt * Math.sin(all + step*i).toFloat()
+                var stopY1 = 0f
+                var stopX1 = 0f
+                if (i % 3 == 0) {
+                    stopY1 = startY1*1.13f
+                    stopX1 = startX1*1.13f
+                    drawLine(startX1, startY1, stopX1, stopY1, doubleMarkPaint)
+                } else {
+                    stopY1 = startY1*1.08f
+                    stopX1 = startX1*1.08f
+                    drawLine(startX1, startY1, stopX1, stopY1, markPaint)
+                }
 
-                drawLine(startX1, startY1, stopX1, stopY1, markPaint)
             }
 
-            //drawLine(xp/2, yp*1.8f, xp/2 + 50f, yp*1.8f - 50f, markPaint)
-            //drawLine(xp, yp, xp + xp * Math.cos(30.0).toFloat(), yp * 2, markPaint)
+            val textWdt = width/2 - 180f
+            val textHgt = height - 150f
 
-            /*val maxValue = 120
-            val value = 25
+            val textCount = 11
 
-            val scale = 0.9f
+            for (i in 0 until  textCount) {
+                val startX1 = -50f - textWdt * Math.cos(all + step*3*i).toFloat()
+                val startY1 = 20f - textHgt * Math.sin(all + step*3*i).toFloat()
+                drawText((10 * i * 3).toString(), startX1, startY1, textPaint )
 
-            val step = Math.PI / maxValue
-            for (i in 0..maxValue) {
-                val x1 = xp + Math.cos(Math.PI - step * i).toFloat()
-                val y1 = yp + Math.sin(Math.PI - step * i).toFloat()
-                var x2: Float
-                var y2: Float
-                if (i % 20 == 0) {
-                    x2 = x1 * scale * 0.9f
-                    y2 = y1 * scale * 0.9f
-                } else {
-                    x2 = x1 * scale
-                    y2 = y1 * scale
-                }
-                canvas.drawLine(x1, y1, x2, y2, markPaint)
-            }*/
+                //drawPath(trianglePath(0f, 0f, 30f, height * Math.sin(all + step*3*i).toFloat(), width / 2 * Math.cos(all + step*3*i).toFloat(), 0f), arrowPaint)
+                //drawPath(trianglePath(0f, 0f, 30f, height * Math.sin(all + step*3*i).toFloat(), width / 2 * Math.cos(all + step*3*i).toFloat(), arrowPaint2.strokeWidth), arrowPaint2)
+            }
+
+            //drawLine(0f, 0f,-textHgt + 200f, textWdt, arrowPaint)
+            drawPath(trianglePath(0f, 0f, 30f, height - 120f, -height - 120f, 0f), arrowPaint)
+            drawPath(trianglePath(0f, 0f, 30f, height - 120f, -height - 120f,  arrowPaint2.strokeWidth), arrowPaint2)
+            //drawTriangle(this, arrowPaint, 0, 0, 30)
         }
 
 
+    }
+
+    fun trianglePath(x: Float, y: Float, width: Float, h: Float, w: Float, strokeWidth: Float): Path {
+        val halfWidth = width / 2
+
+        /*return Path().apply {
+            moveTo(h, w) //top
+            lineTo(x - width, y) // bottom left
+            moveTo(h, w) //top
+            lineTo(x + width, y) // bottom right
+            moveTo(x, y)
+            lineTo(x + width + strokeWidth/2, y) // back to top
+            lineTo(x - width - strokeWidth/2, y) // back to top
+            //close()
+        }*/
+
+        return Path().apply {
+            moveTo(x, y) //top
+            lineTo(x + halfWidth + strokeWidth, y) // bottom left
+            //moveTo(h, w) //top
+            lineTo(x, h) // bottom right
+            //moveTo(x, y)
+            lineTo(x - halfWidth - strokeWidth, y) // back to top
+            lineTo(x + width, y) // back to top
+            //close()
+        }
+    }
+
+    fun drawTriangle(canvas: Canvas, paint: Paint?, x: Int, y: Int, width: Int) {
+        val halfWidth = width / 2
+        val path = Path()
+        path.moveTo(x.toFloat(), (y - halfWidth).toFloat()) // Top
+        path.lineTo((x - halfWidth).toFloat(), (y + halfWidth).toFloat()) // Bottom left
+        path.lineTo((x + halfWidth).toFloat(), (y + halfWidth).toFloat()) // Bottom right
+        path.lineTo(x.toFloat(), (y - halfWidth).toFloat()) // Back to Top
+        path.close()
+        canvas.drawPath(path, paint!!)
     }
 
     fun configurePaint() {

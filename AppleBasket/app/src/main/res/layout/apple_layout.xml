@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:background="@drawable/apple_background" >
+
+        <TextView
+            android:id="@+id/apple_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            tools:text="Apple #1"
+            android:background="@drawable/apple_name_background"
+            android:textColor="@color/apple_text"
+            android:layout_gravity="start|top"
+            />
+
+        <ImageView
+            android:id="@+id/eat_apple"
+            android:layout_width="36dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_apple_eat"
+            android:contentDescription="@string/eat_apple" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

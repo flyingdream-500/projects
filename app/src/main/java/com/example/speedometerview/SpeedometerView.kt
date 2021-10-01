@@ -321,7 +321,7 @@ class SpeedometerView(
             drawMarks(markWidth, markHeight)
 
             // draw numbers
-            val speedPerMark = maxSpeed / COUNT_OF_MARKS
+            val speedPerMark = maxSpeed / COUNT_OF_MARKS.toFloat()
             drawNumbers(textWidth, textHeight, speedPerMark)
 
             //rotate

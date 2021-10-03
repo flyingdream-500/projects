@@ -74,14 +74,14 @@ object SpeedometerCanvas {
      * Drawing numbers on double marks
      * @see Const.MARKS_PER_NUMBER
      */
-    fun Canvas.drawNumbers(textWidth: Float, textHeight: Float, speedPerMark: Int) {
+    fun Canvas.drawNumbers(textWidth: Float, textHeight: Float, speedPerMark: Float) {
         for (i in 0 until Const.COUNT_OF_NUMBERS) {
             val startX = textWidth * cos(Const.ARC_LENGTH + Const.STEP_OF_MARKS * Const.MARKS_PER_NUMBER * i)
                 .toFloat() - SpeedometerPaints.radius * 0.1f
             val startY = textHeight * sin(Const.ARC_LENGTH + Const.STEP_OF_MARKS * Const.MARKS_PER_NUMBER * i)
                 .toFloat() + SpeedometerPaints.radius * 0.04f
             drawText(
-                (speedPerMark * i * Const.MARKS_PER_NUMBER).toString(),
+                (speedPerMark * i * Const.MARKS_PER_NUMBER).toInt().toString(),
                 startX,
                 startY,
                 SpeedometerPaints.textPaint

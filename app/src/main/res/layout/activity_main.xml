@@ -10,11 +10,10 @@
 
     <com.example.speedometerview.SpeedometerView
         android:id="@+id/speedometer_view"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:padding="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="50dp"
         android:layout_margin="10dp"
-        app:currentSpeed="0"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,15 +25,22 @@
         android:id="@+id/currentSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
+        android:layout_margin="20dp"
         android:padding="15dp"
-        android:text="@string/start"
-        android:gravity="center"
+        tools:text="Current Speed: 100 km/H"
         style="@style/SpeedTextViewStyle"
-        app:layout_constraintEnd_toEndOf="@id/speedometer_view"
-        app:layout_constraintStart_toStartOf="@id/speedometer_view"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/speedometer_view"
         />
 
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        style="@style/SpeedSeekBarStyle"
+        app:layout_constraintEnd_toEndOf="@id/speedometer_view"
+        app:layout_constraintStart_toStartOf="@+id/speedometer_view"
+        app:layout_constraintTop_toBottomOf="@+id/currentSpeed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

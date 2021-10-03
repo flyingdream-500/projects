@@ -1,6 +1,8 @@
 package com.example.speedometerview.utils
 
-object Const {
+import android.animation.ValueAnimator
+
+object SpeedometerViewConst {
     const val START_COUNTDOWN_ANGLE = 60f
     const val END_COUNTDOWN_ANGLE = -300f
 
@@ -15,4 +17,13 @@ object Const {
     const val MARKS_PER_NUMBER = 3
 
     const val MIN_WRAP = 700
+}
+
+object SpeedAnimatorConst {
+    const val SPEED_KEY = "speed"
+    const val GRADIENT_KEY = "gradient"
+    const val SCALE_KEY = "scale"
+    const val ANIM_DURATION = 5_000L
+    const val ANIM_REPEAT_MODE = ValueAnimator.REVERSE
+    const val ANIM_REPEAT_COUNT = 1
 }

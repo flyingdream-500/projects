@@ -1,11 +1,15 @@
 package com.example.speedometerview.utils
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.RectF
+import androidx.core.content.ContextCompat
+import com.example.speedometerview.R
+import com.example.speedometerview.SpeedometerView
 
-object Func {
+object SpeedometerViewFunc {
 
     // Rect for speed gradient arc on speedometer
     fun gradientRectangle(paint: Paint, sourceArc: RectF): RectF {
@@ -47,4 +51,29 @@ object Func {
         }
     }
 
+}
+
+object SpeedometerAnimatorFunc {
+
+    fun Context.getSpeedCounterColors(): IntArray {
+        val colorStart = ContextCompat.getColor(this, R.color.green)
+        val colorCenter = ContextCompat.getColor(this, R.color.yellow)
+        val colorEnd = ContextCompat.getColor(this, R.color.red)
+        return intArrayOf(colorStart, colorCenter, colorEnd)
+    }
+
+
+    fun SpeedometerView.getSpeedPositions(): FloatArray {
+        val maxSpeed = getMaxSpeed().toFloat()
+        val currentSpeed = getCurrentSpeed().toFloat()
+        val halfPosition = (maxSpeed - currentSpeed) / 2
+        return floatArrayOf(currentSpeed, halfPosition, maxSpeed)
+    }
+
+    fun getScalePositions(): FloatArray {
+        val startScale = 1f
+        val centerScale = 1.25f
+        val endScale = 1.5f
+        return floatArrayOf(startScale, centerScale, endScale)
+    }
 }

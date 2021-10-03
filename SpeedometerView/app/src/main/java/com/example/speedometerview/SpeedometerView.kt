@@ -6,8 +6,8 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.ColorInt
 import com.example.speedometerview.utils.*
-import com.example.speedometerview.utils.Const.COUNT_OF_MARKS
-import com.example.speedometerview.utils.Const.MIN_WRAP
+import com.example.speedometerview.utils.SpeedometerViewConst.COUNT_OF_MARKS
+import com.example.speedometerview.utils.SpeedometerViewConst.MIN_WRAP
 import com.example.speedometerview.utils.SpeedometerPaints.arrowPaint
 import com.example.speedometerview.utils.SpeedometerPaints.createArrowPaint
 import com.example.speedometerview.utils.SpeedometerPaints.arrowStrokePaint

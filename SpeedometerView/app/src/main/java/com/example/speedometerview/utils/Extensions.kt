@@ -23,11 +23,11 @@ object SpeedometerCanvas {
     }
 
     fun Canvas.drawArrow(r: Float, paint: Paint) {
-        drawPath(Func.trianglePath(r * 0.05f, r * 0.75f, paint.strokeWidth), paint)
+        drawPath(SpeedometerViewFunc.trianglePath(r * 0.05f, r * 0.75f, paint.strokeWidth), paint)
     }
 
     fun Canvas.rotateSpeed(speed: Int, maxSpeed: Int) {
-        rotate(Const.START_ARROW_ANGLE + Const.END_ARROW_ANGLE * (speed / maxSpeed.toFloat()))
+        rotate(SpeedometerViewConst.START_ARROW_ANGLE + SpeedometerViewConst.END_ARROW_ANGLE * (speed / maxSpeed.toFloat()))
     }
 
     // Drawing AMG logo
@@ -43,9 +43,9 @@ object SpeedometerCanvas {
     // Drawing speed gradient arc on speedometer
     fun Canvas.drawSpeedGradient(arcRect: RectF) {
         drawArc(
-            Func.gradientRectangle(SpeedometerPaints.fifthLayerPaint, arcRect),
-            Const.START_COUNTDOWN_ANGLE,
-            Const.END_COUNTDOWN_ANGLE,
+            SpeedometerViewFunc.gradientRectangle(SpeedometerPaints.fifthLayerPaint, arcRect),
+            SpeedometerViewConst.START_COUNTDOWN_ANGLE,
+            SpeedometerViewConst.END_COUNTDOWN_ANGLE,
             false,
             SpeedometerPaints.fifthLayerPaint
         )
@@ -53,9 +53,9 @@ object SpeedometerCanvas {
 
     // Drawing marks and double marks on speedometer
     fun Canvas.drawMarks(markWidth: Float, markHeight: Float) {
-        for (i in 0..Const.COUNT_OF_MARKS) {
-            val startX = markWidth * cos(Const.ARC_LENGTH + Const.STEP_OF_MARKS * i).toFloat()
-            val startY = markHeight * sin(Const.ARC_LENGTH + Const.STEP_OF_MARKS * i).toFloat()
+        for (i in 0..SpeedometerViewConst.COUNT_OF_MARKS) {
+            val startX = markWidth * cos(SpeedometerViewConst.ARC_LENGTH + SpeedometerViewConst.STEP_OF_MARKS * i).toFloat()
+            val startY = markHeight * sin(SpeedometerViewConst.ARC_LENGTH + SpeedometerViewConst.STEP_OF_MARKS * i).toFloat()
             var stopY = 0f
             var stopX = 0f
             if (i % 3 == 0) {
@@ -72,16 +72,16 @@ object SpeedometerCanvas {
 
     /**
      * Drawing numbers on double marks
-     * @see Const.MARKS_PER_NUMBER
+     * @see SpeedometerViewConst.MARKS_PER_NUMBER
      */
     fun Canvas.drawNumbers(textWidth: Float, textHeight: Float, speedPerMark: Float) {
-        for (i in 0 until Const.COUNT_OF_NUMBERS) {
-            val startX = textWidth * cos(Const.ARC_LENGTH + Const.STEP_OF_MARKS * Const.MARKS_PER_NUMBER * i)
+        for (i in 0 until SpeedometerViewConst.COUNT_OF_NUMBERS) {
+            val startX = textWidth * cos(SpeedometerViewConst.ARC_LENGTH + SpeedometerViewConst.STEP_OF_MARKS * SpeedometerViewConst.MARKS_PER_NUMBER * i)
                 .toFloat() - SpeedometerPaints.radius * 0.1f
-            val startY = textHeight * sin(Const.ARC_LENGTH + Const.STEP_OF_MARKS * Const.MARKS_PER_NUMBER * i)
+            val startY = textHeight * sin(SpeedometerViewConst.ARC_LENGTH + SpeedometerViewConst.STEP_OF_MARKS * SpeedometerViewConst.MARKS_PER_NUMBER * i)
                 .toFloat() + SpeedometerPaints.radius * 0.04f
             drawText(
-                (speedPerMark * i * Const.MARKS_PER_NUMBER).toInt().toString(),
+                (speedPerMark * i * SpeedometerViewConst.MARKS_PER_NUMBER).toInt().toString(),
                 startX,
                 startY,
                 SpeedometerPaints.textPaint

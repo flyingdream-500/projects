@@ -13,14 +13,12 @@ import com.example.fragmentsproject.interfaces.PublicApi
 
 class ThirdFragment : Fragment() {
 
-    private lateinit var binding: ThirdFragmentBinding
     private lateinit var publicApi: PublicApi
+    private lateinit var binding: ThirdFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            publicApi = activity as PublicApi
-        }
+        publicApi = activity as PublicApi
     }
 
     override fun onCreateView(
@@ -37,11 +35,11 @@ class ThirdFragment : Fragment() {
     }
 
     fun setText(text: String) {
-        binding?.tvMessage.text = text
+        binding.tvMessage.text = text
     }
 
     companion object {
-        const val TEXT_KEY = "TEXT_KEY"
+        private const val TEXT_KEY = "TEXT_KEY"
 
         fun newInstance(text: String): ThirdFragment {
             return ThirdFragment().apply {

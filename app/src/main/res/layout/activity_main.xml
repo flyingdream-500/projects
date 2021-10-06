@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     android:id="@+id/root_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -21,10 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/third_fragment_container_view_tag"
-        android:name="com.example.fragmentsproject.fragments.ThirdFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-</LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

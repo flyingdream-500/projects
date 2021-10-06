@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">FragmentsProject</string>
+    <string name="app_name">Fragments Project</string>
+    <string name="send">SEND</string>
 </resources>

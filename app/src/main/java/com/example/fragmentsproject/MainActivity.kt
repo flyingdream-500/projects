@@ -2,56 +2,76 @@ package com.example.fragmentsproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import com.example.fragmentsproject.databinding.ActivityMainBinding
-import com.example.fragmentsproject.fragments.FirstFragment
 import com.example.fragmentsproject.fragments.ThirdFragment
-import com.example.fragmentsproject.fragments.ThirdFragment.Companion.TEXT_KEY
 import com.example.fragmentsproject.interfaces.PublicApi
+import com.example.fragmentsproject.utils.createNewFragmentContainer
 
 class MainActivity : AppCompatActivity(), PublicApi {
 
-    private var thirdFragmentTAG = "ThirdFragment"
-    private var textT: String = ""
-
+    private var thirdFragment: ThirdFragment? = null
     private lateinit var binding: ActivityMainBinding
+
+    //Текст из первого фрагмента с EditText
+    private var currentText: String = ""
+
+    //Был ли совершен вызов третьего фрагмента
+    private var clicked: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(savedInstanceState == null) {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace<FirstFragment>(R.id.first_fragment_container_view_tag)
-            }
-        }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(CURRENT_TEXT_KEY, currentText)
+        outState.putBoolean(CLICKED_KEY, clicked)
+    }
+
+    //Восстановление значений введенного текста из первого фрагмента
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        clicked = savedInstanceState.getBoolean(CLICKED_KEY)
+        currentText = savedInstanceState.getString(CURRENT_TEXT_KEY).toString()
+
+        if (clicked) createThirdFragment()
+    }
+
 
     override fun onClick() {
-        if (getThirdFragmentByTag() == null) {
-            val bundle = bundleOf(TEXT_KEY to textT)
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace<ThirdFragment>(R.id.third_fragment_container_view_tag, args = bundle, tag = thirdFragmentTAG)
-            }
-
+        if (!clicked) {
+            clicked = true
+            createThirdFragment()
         }
-    }
-
-    fun getThirdFragmentByTag(): ThirdFragment? {
-        return supportFragmentManager.findFragmentByTag(thirdFragmentTAG) as? ThirdFragment
     }
 
     override fun setText(text: String) {
-        textT = text
-        getThirdFragmentByTag()?.setText(text)
+        currentText = text
+        thirdFragment?.setText(text)
     }
 
     override fun getText(): String {
-        return ""
+        return currentText
+    }
+
+    private fun createThirdFragment() {
+        binding.createNewFragmentContainer()
+
+        if (thirdFragment == null) {
+            thirdFragment = ThirdFragment.newInstance(currentText)
+            supportFragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.third_fragment_container_view_tag, thirdFragment!!)
+                .commit()
+        }
+    }
+
+    companion object {
+        private const val CLICKED_KEY = "CLICKED_KEY"
+        private const val CURRENT_TEXT_KEY = "CURRENT_TEXT_KEY"
     }
 }

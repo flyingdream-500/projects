@@ -3,15 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/second_fragment_background"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="send"
+        android:background="@drawable/third_fragment_background"
+        android:textColor="@color/white"
+        android:text="@string/send"
         android:layout_margin="20dp"
         />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

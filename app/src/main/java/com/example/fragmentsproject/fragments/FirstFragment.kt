@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import com.example.fragmentsproject.interfaces.PublicApi
 import com.example.fragmentsproject.R
 import com.example.fragmentsproject.databinding.FirstFragmentBinding
-
+import com.example.fragmentsproject.interfaces.PublicApi
 
 class FirstFragment : Fragment() {
 
@@ -18,9 +17,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         publicApi = activity as PublicApi
-
     }
 
     override fun onCreateView(
@@ -33,7 +30,9 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FirstFragmentBinding.bind(view)
-        binding.etMessage.addTextChangedListener { publicApi.setText(it.toString()) }
+        binding.etMessage.addTextChangedListener {
+            publicApi.setText(it.toString())
+        }
     }
 
     companion object {

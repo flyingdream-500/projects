@@ -1,9 +1,11 @@
 package com.example.fragmentsproject.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.fragmentsproject.R
@@ -15,6 +17,7 @@ class ThirdFragment : Fragment() {
 
     private lateinit var binding: ThirdFragmentBinding
     private lateinit var publicApi: PublicApi
+    private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +35,29 @@ class ThirdFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = ThirdFragmentBinding.bind(view)
-        binding.tvMessage.text = arguments?.getString(TEXT_KEY)
+        //binding = ThirdFragmentBinding.bind(view)
+        //binding.tvMessage.text = arguments?.getString(TEXT_KEY)
+        textView = view.findViewById<TextView>(R.id.tv_message)
+
+        if (savedInstanceState == null) {
+            Log.d("TAGG", "ThirdFragment: args ${arguments?.getString(TEXT_KEY)}")
+            textView.text = arguments?.getString(TEXT_KEY)
+        } else {
+            Log.d("TAGG", "ThirdFragment: saveState ${savedInstanceState.getString("qwerty")}")
+            textView.text = savedInstanceState.getString("qwerty")
+        }
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("qwerty", textView.text.toString())
     }
 
     fun setText(text: String) {
-        binding?.tvMessage.text = text
+        Log.d("TAGG", "ThirdFragment: setText $text")
+        //binding?.tvMessage?.text = text
+        textView.text = text
     }
 
     companion object {

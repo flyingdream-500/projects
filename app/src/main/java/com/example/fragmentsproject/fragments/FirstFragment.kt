@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.fragmentsproject.interfaces.PublicApi
@@ -32,8 +33,12 @@ class FirstFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = FirstFragmentBinding.bind(view)
-        binding.etMessage.addTextChangedListener { publicApi.setText(it.toString()) }
+        //binding = FirstFragmentBinding.bind(view)
+        val edit_text = view.findViewById<EditText>(R.id.et_message)
+        edit_text.addTextChangedListener {
+            publicApi.setText(it.toString())
+        }
+        //binding.etMessage.addTextChangedListener { publicApi.setText(it.toString()) }
     }
 
     companion object {

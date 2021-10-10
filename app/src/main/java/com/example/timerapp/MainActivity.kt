@@ -1,11 +1,12 @@
 package com.example.timerapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
+import android.text.Editable
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.text.isDigitsOnly
 import androidx.core.widget.addTextChangedListener
 import com.example.timerapp.databinding.ActivityMainBinding
 import java.util.concurrent.Executor
@@ -13,11 +14,14 @@ import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var counter = 0
+    //is timer started predicate
     private var started = false
 
+    // Main and Background executors
     private var backgroundExecutor: ScheduledExecutorService? = null
     private var baseExecutor: Executor?= null
 
@@ -28,47 +32,50 @@ class MainActivity : AppCompatActivity() {
 
         baseExecutor = ContextCompat.getMainExecutor(this)
 
+        // Init Counter
+        initCounter(binding.timerInput.text!!)
+        binding.timerInput.setText(counter.toString())
 
-        counter = binding.timerInput.text.toString().toInt()
+
+        //Listeners
         binding.timerInput.addTextChangedListener { text ->
-            val number = text.toString()
-            counter = if (number.isEmpty()) 0 else number.toInt()
+            initCounter(text!!)
         }
-
-
-        binding.timerStart.setOnClickListener {
+        binding.timerButton.setOnClickListener {
             timerStart()
         }
 
+    }
 
+    private fun initCounter(text: Editable) {
+        val number = text.toString()
+        counter = if (number.isNotEmpty() && number.isDigitsOnly()) number.toInt() else 0
     }
 
     private fun timerStart() {
-        if(!started) {
+        if(!started && counter != 0) {
             backgroundExecutor = Executors.newSingleThreadScheduledExecutor()
             started = true
+            binding.timerButton.stopText()
             backgroundExecutor?.scheduleAtFixedRate({
                 counter = backgroundExecutor?.minusOneSeconds() ?: 0
                 baseExecutor?.execute {
-                    binding.timerInput.setText(counter.toString())
-                    if (counter == 0) {
-                        Toast.makeText(binding.root.context, "Дилинь - дилинь ёпт", Toast.LENGTH_SHORT).show()
-                    }
+                    updateInputTimer()
                 }
             }, 1, 1, TimeUnit.SECONDS)
+        } else {
+            started = false
+            binding.timerButton.startText()
+            backgroundExecutor?.shutdownNow()
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.d("TAGG", "onPause")
-//        started = false
-//        backgroundExecutor?.shutdownNow()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("TAGG", "onStop")
+    private fun updateInputTimer() {
+        binding.timerInput.setText(counter.toString())
+        if (counter == 0) {
+            binding.timerButton.startText()
+            Toast.makeText(binding.root.context, resources.getString(R.string.end_timer), Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -76,8 +83,6 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(COUNTER_KEY, counter)
         outState.putBoolean(STARTED_KEY, started)
         backgroundExecutor?.shutdownNow()
-        Log.d("TAGG", "onSaveInstanceState: counter: $counter ")
-        Log.d("TAGG", "onSaveInstanceState: started: $started ")
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -85,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         counter = savedInstanceState.getInt(COUNTER_KEY)
         binding.timerInput.setText(counter.toString())
         started = savedInstanceState.getBoolean(STARTED_KEY)
-        Log.d("TAGG", "counter: $counter started: $started")
         if (started) {
             started = false
             timerStart()
@@ -98,9 +102,17 @@ class MainActivity : AppCompatActivity() {
             counter
         } else {
             started = false
-            shutdown()
+            shutdownNow()
             0
         }
+    }
+
+    private fun Button.startText() {
+        text = resources.getString(R.string.start)
+    }
+
+    private fun Button.stopText() {
+        text = resources.getString(R.string.stop)
     }
 
     companion object {
@@ -108,3 +120,4 @@ class MainActivity : AppCompatActivity() {
         const val STARTED_KEY = "STARTED_KEY"
     }
 }
+

@@ -1,7 +1,9 @@
 package com.example.timerapp
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,28 +11,33 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.isDigitsOnly
 import androidx.core.widget.addTextChangedListener
 import com.example.timerapp.databinding.ActivityMainBinding
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
-import java.util.concurrent.TimeUnit
+import com.example.timerapp.utils.Extensions.endTimerMessage
+import com.example.timerapp.utils.Extensions.startText
+import com.example.timerapp.utils.Extensions.stopText
+import java.util.concurrent.*
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var counter = 0
+
     //is timer started predicate
     private var started = false
 
     // Main and Background executors
     private var backgroundExecutor: ScheduledExecutorService? = null
-    private var baseExecutor: Executor?= null
+    private var baseExecutor: Executor? = null
+    private var timerFuture: ScheduledFuture<*>? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //executors
         baseExecutor = ContextCompat.getMainExecutor(this)
+        backgroundExecutor = Executors.newSingleThreadScheduledExecutor()
 
         // Init Counter
         initCounter(binding.timerInput.text!!)
@@ -45,6 +52,14 @@ class MainActivity : AppCompatActivity() {
             timerStart()
         }
 
+        if (savedInstanceState != null) {
+            started = savedInstanceState.getBoolean(STARTED_KEY)
+            if (started) {
+                started = false
+                timerStart()
+            }
+        }
+
     }
 
     private fun initCounter(text: Editable) {
@@ -53,70 +68,56 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun timerStart() {
-        if(!started && counter != 0) {
-            backgroundExecutor = Executors.newSingleThreadScheduledExecutor()
-            started = true
-            binding.timerButton.stopText()
-            backgroundExecutor?.scheduleAtFixedRate({
-                counter = backgroundExecutor?.minusOneSeconds() ?: 0
-                baseExecutor?.execute {
-                    updateInputTimer()
-                }
-            }, 1, 1, TimeUnit.SECONDS)
+        if (!started && counter != 0) {
+            started()
+            timerFuture = backgroundExecutor?.scheduleAtFixedRate(
+                {
+                    --counter
+                    baseExecutor?.execute { updateInputTimer() }
+                }, 1, 1, TimeUnit.SECONDS
+            )
         } else {
-            started = false
-            binding.timerButton.startText()
-            backgroundExecutor?.shutdownNow()
+            stopped()
         }
     }
 
     private fun updateInputTimer() {
         binding.timerInput.setText(counter.toString())
         if (counter == 0) {
-            binding.timerButton.startText()
-            Toast.makeText(binding.root.context, resources.getString(R.string.end_timer), Toast.LENGTH_SHORT).show()
+            stopped()
+            endTimerMessage()
         }
+    }
+
+
+
+    private fun started() {
+        started = true
+        binding.timerButton.stopText()
+    }
+
+    private fun stopped() {
+        started = false
+        binding.timerButton.startText()
+        timerFuture?.cancel(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timerFuture?.cancel(true)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        backgroundExecutor?.shutdownNow()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(COUNTER_KEY, counter)
         outState.putBoolean(STARTED_KEY, started)
-        backgroundExecutor?.shutdownNow()
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        counter = savedInstanceState.getInt(COUNTER_KEY)
-        binding.timerInput.setText(counter.toString())
-        started = savedInstanceState.getBoolean(STARTED_KEY)
-        if (started) {
-            started = false
-            timerStart()
-        }
-    }
-
-    private fun ScheduledExecutorService.minusOneSeconds(): Int {
-        counter = counter.dec()
-        return if (counter > 0) {
-            counter
-        } else {
-            started = false
-            shutdownNow()
-            0
-        }
-    }
-
-    private fun Button.startText() {
-        text = resources.getString(R.string.start)
-    }
-
-    private fun Button.stopText() {
-        text = resources.getString(R.string.stop)
     }
 
     companion object {
-        const val COUNTER_KEY = "COUNTER_KEY"
         const val STARTED_KEY = "STARTED_KEY"
     }
 }

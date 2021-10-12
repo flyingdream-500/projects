@@ -3,10 +3,7 @@ package com.example.applebasket.model
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Apple(
-    val name: String,
-    var owner: Basket,
-) : RowType {
+data class ApplesSum(val sum: Int) : RowType {
     override val rowType: Int
-        get() = APPLE_ROW_TYPE
+        get() = SUM_ROW_TYPE
 }

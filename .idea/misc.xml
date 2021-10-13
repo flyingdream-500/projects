@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/NetworkRequestsProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/NetworkRequestsProject/app/src/main/res/layout/user_ite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/NetworkRequestsProject/app/src/main/res/layout/user_item.xml" value="0.4" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/NetworkRequestsProject/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/StudioProjects/NeworkRequestsProject/app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/Ildar/StudioProjects/NeworkRequestsProject/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
       </map>

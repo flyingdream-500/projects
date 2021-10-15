@@ -2,18 +2,19 @@ package com.example.neworkrequestsproject.presentation.recycler
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.neworkrequestsproject.domain.model.User
 
-class UserAdapter : RecyclerView.Adapter<UserViewHolder>() {
+class UserAdapter(private val users: List<User>) : RecyclerView.Adapter<UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        TODO("Not yet implemented")
+        return UserViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(users.get(position))
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return users.size
     }
 }

@@ -1,34 +1,49 @@
 package com.example.neworkrequestsproject.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.neworkrequestsproject.R
+import com.example.neworkrequestsproject.data.BaseUserRepository
+import com.example.neworkrequestsproject.data.OkHttpUserRepository
+import com.example.neworkrequestsproject.data.converter.UserConverter
 import com.example.neworkrequestsproject.databinding.ActivityMainBinding
+import com.example.neworkrequestsproject.domain.UserInteract
+import com.example.neworkrequestsproject.domain.model.Person
 import com.example.neworkrequestsproject.presentation.recycler.UserAdapter
-import okhttp3.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModelFactory: ViewModelFactory
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        provideDependencies()
+
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         viewModel.getErrorData().observe(this) { errorMessage ->
             binding.run {
                 rvUsers.visibility = View.GONE
-                noDataMessage.visibility = View.VISIBLE
                 noDataImage.visibility = View.VISIBLE
+                noDataMessage.visibility = View.VISIBLE
                 noDataMessage.text = errorMessage
+            }
+        }
+
+        viewModel.getPostData().observe(this) { posted ->
+            binding.run {
+                rvUsers.visibility = View.GONE
+                noDataImage.visibility = View.GONE
+                noDataMessage.visibility = View.VISIBLE
+                noDataMessage.text = String.format(resources.getString(R.string.created), posted)
             }
         }
 
@@ -45,12 +60,10 @@ class MainActivity : AppCompatActivity() {
                     noDataMessage.visibility = View.GONE
                     noDataImage.visibility = View.GONE
                     rvUsers.visibility = View.VISIBLE
-                    rvUsers.adapter = UserAdapter()
+                    rvUsers.adapter = UserAdapter(users)
                 }
             }
-
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,19 +72,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.get_users -> {
-
+                viewModel.getUsers()
             }
             R.id.post_user -> {
-
+                val person = Person("Ivan", "dev")
+                viewModel.postPerson(person)
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 
     private fun provideDependencies() {
-
+        val repository: BaseUserRepository = OkHttpUserRepository(UserConverter())
+        val interact = UserInteract(repository)
+        viewModelFactory = ViewModelFactory(interact)
     }
+
+
 }

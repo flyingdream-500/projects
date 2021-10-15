@@ -1,11 +1,7 @@
 package com.example.timerapp
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.isDigitsOnly
@@ -17,6 +13,7 @@ import com.example.timerapp.utils.Extensions.stopText
 import java.util.concurrent.*
 
 
+//comment
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var counter = 0

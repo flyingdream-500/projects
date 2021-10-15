@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Timer App</string>
-    <string name="start">start</string>
-    <string name="stop">stop</string>
-    <string name="end_timer">Дилинь - дилинь</string>
-    <string name="default_counter">10</string>
-</resources>

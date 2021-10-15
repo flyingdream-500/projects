@@ -1,6 +1,5 @@
 package com.example.neworkrequestsproject.data
 
-import android.util.Log
 import com.example.neworkrequestsproject.data.converter.UserConverter
 import com.example.neworkrequestsproject.domain.model.Person
 import com.example.neworkrequestsproject.domain.model.User

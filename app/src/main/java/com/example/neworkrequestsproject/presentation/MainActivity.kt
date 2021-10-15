@@ -3,7 +3,6 @@ package com.example.neworkrequestsproject.presentation
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.neworkrequestsproject.R
@@ -13,7 +12,9 @@ import com.example.neworkrequestsproject.data.converter.UserConverter
 import com.example.neworkrequestsproject.databinding.ActivityMainBinding
 import com.example.neworkrequestsproject.domain.UserInteract
 import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.presentation.recycler.UserAdapter
+import com.example.neworkrequestsproject.presentation.utils.Extensions.observeError
+import com.example.neworkrequestsproject.presentation.utils.Extensions.observePost
+import com.example.neworkrequestsproject.presentation.utils.Extensions.observeUsers
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,39 +31,15 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         viewModel.getErrorData().observe(this) { errorMessage ->
-            binding.run {
-                rvUsers.visibility = View.GONE
-                noDataImage.visibility = View.VISIBLE
-                noDataMessage.visibility = View.VISIBLE
-                noDataMessage.text = errorMessage
-            }
+            binding.observeError(errorMessage)
         }
 
-        viewModel.getPostData().observe(this) { posted ->
-            binding.run {
-                rvUsers.visibility = View.GONE
-                noDataImage.visibility = View.GONE
-                noDataMessage.visibility = View.VISIBLE
-                noDataMessage.text = String.format(resources.getString(R.string.created), posted)
-            }
+        viewModel.getPostData().observe(this) { postedMessage ->
+            binding.observePost(postedMessage)
         }
 
         viewModel.getUsersData().observe(this) { users ->
-            if (users.isEmpty()) {
-                binding.run {
-                    noDataImage.visibility = View.GONE
-                    rvUsers.visibility = View.GONE
-                    noDataMessage.visibility = View.VISIBLE
-                    noDataMessage.text = resources.getString(R.string.no_data)
-                }
-            } else {
-                binding.run {
-                    noDataMessage.visibility = View.GONE
-                    noDataImage.visibility = View.GONE
-                    rvUsers.visibility = View.VISIBLE
-                    rvUsers.adapter = UserAdapter(users)
-                }
-            }
+            binding.observeUsers(users)
         }
     }
 
@@ -77,8 +54,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.getUsers()
             }
             R.id.post_user -> {
-                val person = Person("Ivan", "dev")
-                viewModel.postPerson(person)
+                viewModel.postPerson(Person("Ivan", "dev"))
             }
         }
         return super.onOptionsItemSelected(item)

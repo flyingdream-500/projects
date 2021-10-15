@@ -30,7 +30,6 @@ class MainViewModel(private val interact: UserInteract) : ViewModel() {
                     usersLiveData.postValue(it)
                 }
             } catch (e: IOException) {
-                Log.d("TAGG", "viewModel exception ${e.message}")
                 errorLiveData.postValue(e.message)
             }
         }

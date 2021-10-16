@@ -1,18 +1,17 @@
 package com.example.neworkrequestsproject.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.neworkrequestsproject.domain.UserInteract
+import com.example.neworkrequestsproject.domain.background.Background
+import com.example.neworkrequestsproject.domain.background.RxBackground
 import com.example.neworkrequestsproject.domain.model.Person
 import com.example.neworkrequestsproject.domain.model.User
-import okio.IOException
-import java.util.concurrent.Executors
 
-class MainViewModel(private val interact: UserInteract) : ViewModel() {
+class MainViewModel(interact: UserInteract) : ViewModel() {
 
-    private val executorService = Executors.newSingleThreadExecutor()
+    private var background: Background = RxBackground(interact)
 
     private val errorLiveData = MutableLiveData<String>()
     private val postLiveData = MutableLiveData<String>()
@@ -23,33 +22,15 @@ class MainViewModel(private val interact: UserInteract) : ViewModel() {
     fun getUsersData(): LiveData<List<User>> = usersLiveData
 
     fun getUsers() {
-        executorService.submit {
-            try {
-                val usersList = interact.getList()
-                usersList?.let {
-                    usersLiveData.postValue(it)
-                }
-            } catch (e: IOException) {
-                errorLiveData.postValue(e.message)
-            }
-        }
+        background.getUsers(usersLiveData, errorLiveData)
     }
 
     fun postPerson(person: Person) {
-        executorService.submit {
-            try {
-                val response = interact.postPerson(person)
-                response?.let {
-                    postLiveData.postValue(it)
-                }
-            } catch (e: IOException) {
-                errorLiveData.postValue(e.message)
-            }
-        }
+        background.postPerson(postLiveData, errorLiveData, person)
     }
 
     override fun onCleared() {
         super.onCleared()
-        executorService.shutdownNow()
+        background.close()
     }
 }

@@ -17,7 +17,7 @@
 
 Так же при работе используется **DiffUtil** для обновления списка
 
-
+[Другой вариант реализации](https://github.com/flyingdream-500/animation-projects/tree/main/AppleBasket) 
 
 
 

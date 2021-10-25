@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SMS Receiver</string>
+
+    <string name="caller">Came from: %1$s</string>
+    <string name="wrong_caller">Inappropriate number</string>
+    <string name="permissions_granted">Permission Granted</string>
+    <string name="permissions_denied">Permission Denied</string>
+</resources>

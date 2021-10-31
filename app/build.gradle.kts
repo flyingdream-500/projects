@@ -1,26 +1,36 @@
-    plugins {
+
+plugins {
     id ("com.android.application")
-    id ("kotlin-android")
+    kotlin("android")
+    kotlin("kapt")
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Config.compileSdk
+
+
 
     defaultConfig {
-        applicationId = "com.example.finalproject"
-        minSdk = 22
-        targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Config.packageName
+        minSdk = Config.minSdk
+        targetSdk = Config.targetSdk
+        versionCode = Config.versionCode
+        versionName = Config.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Config.testInstrumentationRunner
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
+    }
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -33,11 +43,38 @@ android {
 
 dependencies {
 
-    implementation ("androidx.core:core-ktx:1.6.0")
-    implementation ("androidx.appcompat:appcompat:1.3.1")
+    //Base
+    implementation (Dependencies.Base.appcompat)
+    implementation (Dependencies.Base.coreKtx)
     implementation (Dependencies.Base.material)
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.1")
-    testImplementation ("junit:junit:4.+")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+    implementation (Dependencies.Base.constraintLayout)
+
+    //Navigation
+    implementation (Dependencies.Navigation.navigationFragment)
+    implementation (Dependencies.Navigation.navigationUi)
+
+    //Moshi
+    implementation (Dependencies.Moshi.moshi)
+    implementation (Dependencies.Moshi.moshiKotlin)
+    implementation (Dependencies.Moshi.moshiTest)
+    kapt (Dependencies.Moshi.moshiKotlinCodegen)
+
+    //OkHttp
+    implementation(Dependencies.OkHttp.okHttp)
+
+    //Rx
+    implementation(Dependencies.Rx.rxJava)
+    implementation(Dependencies.Rx.rxAndroid)
+
+    //Lottie
+    implementation(Dependencies.Lottie.lottie)
+
+    //Dagger2
+    implementation(Dependencies.Dagger.dagger)
+    kapt(Dependencies.Dagger.daggerCompiler)
+
+    //Test
+    testImplementation (Dependencies.Test.jUnit)
+    androidTestImplementation (Dependencies.Test.androidJUnit)
+    androidTestImplementation (Dependencies.Test.espresso)
 }

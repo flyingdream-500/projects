@@ -1,5 +1,6 @@
 package com.example.neworkrequestsproject.domain.background
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.neworkrequestsproject.domain.UserInteract
 import com.example.neworkrequestsproject.domain.model.Person
@@ -7,20 +8,17 @@ import com.example.neworkrequestsproject.domain.model.User
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class RxBackground(private val interact: UserInteract) : Background {
 
-    private var disposable: Disposable? = null
+    private var compositeDisposable: CompositeDisposable? = null
 
 
     override fun close() {
-        disposable?.let {
-            if (!it.isDisposed) {
-                it.dispose()
-            }
-        }
+        compositeDisposable?.clear()
     }
 
     override fun postPerson(
@@ -45,15 +43,15 @@ class RxBackground(private val interact: UserInteract) : Background {
     private fun getObserver(usersLiveData: MutableLiveData<List<User>>, errorsLiveData: MutableLiveData<String>) =
         object : Observer<List<User>> {
             override fun onSubscribe(d: Disposable) {
-                disposable = d
+                compositeDisposable?.add(d)
             }
 
             override fun onNext(t: List<User>) {
-                usersLiveData.postValue(t)
+                usersLiveData.value = t
             }
 
             override fun onError(e: Throwable) {
-                errorsLiveData.postValue(e.message)
+                errorsLiveData.value = e.message
             }
 
             override fun onComplete() {}
@@ -63,15 +61,15 @@ class RxBackground(private val interact: UserInteract) : Background {
     private fun postObserver(postsLiveData: MutableLiveData<String>, errorsLiveData: MutableLiveData<String>) =
         object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
-                disposable = d
+                compositeDisposable?.add(d)
             }
 
             override fun onNext(t: String) {
-                postsLiveData.postValue(t)
+                postsLiveData.value = t
             }
 
             override fun onError(e: Throwable) {
-                errorsLiveData.postValue(e.message)
+                errorsLiveData.value = e.message
             }
 
             override fun onComplete() {}

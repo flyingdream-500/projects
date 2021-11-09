@@ -1,11 +1,13 @@
 package com.example.voicerecorderapp.presentation.recyclerview
 
+import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.voicerecorderapp.data.RecordItem
+import kotlin.reflect.KFunction2
 
-class RecordsAdapter: RecyclerView.Adapter<RecordViewHolder>() {
+class RecordsAdapter(private val playing: KFunction2<RecordItem, Context, Unit>) : RecyclerView.Adapter<RecordViewHolder>() {
     private var listOfRecords: List<RecordItem> = emptyList()
 
     fun setRecordItems(newItems: List<RecordItem>) {
@@ -15,7 +17,7 @@ class RecordsAdapter: RecyclerView.Adapter<RecordViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordViewHolder {
-        return RecordViewHolder.create(parent)
+        return RecordViewHolder.create(parent, playing)
     }
 
     override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {

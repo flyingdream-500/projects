@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">VoiceRecorderApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="listening_notification_name">Listening</string>
+    <string name="listening_notification_description">Listening of voice records</string>
 </resources>

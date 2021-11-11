@@ -28,6 +28,11 @@
             android:exported="true"
             android:process=":remote">
         </service>
+        <service
+            android:name=".service.RecordingService"
+            android:exported="true"
+            android:process=":remoteRecord">
+        </service>
     </application>
 
 </manifest>

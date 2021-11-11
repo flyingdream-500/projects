@@ -16,6 +16,8 @@ class RecordsAdapter(private val playing: KFunction2<RecordItem, Context, Unit>)
         notifyDataSetChanged()
     }
 
+    fun getRecordItems(): List<RecordItem> = listOfRecords
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordViewHolder {
         return RecordViewHolder.create(parent, playing)
     }

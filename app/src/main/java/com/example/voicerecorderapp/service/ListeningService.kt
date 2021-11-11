@@ -12,9 +12,10 @@ import com.example.voicerecorderapp.presentation.AllRecordsFragment
 import com.example.voicerecorderapp.utils.allrecords.ListeningNotification.LISTENING_NOTIFICATION_ID
 import com.example.voicerecorderapp.utils.allrecords.ListeningNotification.createPauseNotification
 import com.example.voicerecorderapp.utils.allrecords.ListeningNotification.createPlayNotification
+import com.example.voicerecorderapp.utils.allrecords.ListeningNotification.getNotificationManager
 import java.io.File
 
-class ListeningService: Service() {
+class ListeningService: Service(), IMediaPlayer, INotificationChanges {
 
     val mBinder = LocalBinder()
     val messenger = Messenger(IncomingHandler())
@@ -22,6 +23,8 @@ class ListeningService: Service() {
     private var mediaPlayer: MediaPlayer? = null
 
     private var defaultRecordItem: RecordItem? = null
+
+    var resetPlaying: () -> Unit = {}
 
     companion object {
         val MSG_EXAMPLE: Int = 1
@@ -38,24 +41,15 @@ class ListeningService: Service() {
 
     inner class IncomingHandler : Handler() {
         override fun handleMessage(msg: Message) {
-            Log.d("SRC", "Service: handleMessage")
+
             when(msg.what) {
                 MSG_EXAMPLE -> {
-                    Toast.makeText(applicationContext, "Message Received", Toast.LENGTH_SHORT).show()
-                    replyToFragment(msg.replyTo)
+                    Log.d("SRC", "Service: GET MESSAGE")
+                    resetPlaying = {replyToFragment(msg.replyTo) }
+                    //replyToFragment(msg.replyTo)
                 }
                 MSG_RECORD -> {
-                    val recordItem = msg.data.getParcelable<RecordItem>("RECORD ITEM KEY")!!
-                    mediaPlayer = MediaPlayer.create(this@ListeningService, Uri.fromFile(File(recordItem.path)))
-                    mediaPlayer?.let {
-                        if (it.isPlaying) {
-                            it.pause()
-                            startForeground(LISTENING_NOTIFICATION_ID, createPlayNotification(""))
-                        } else {
-                            mediaPlayer?.start()
-                            startForeground(LISTENING_NOTIFICATION_ID, createPauseNotification(""))
-                        }
-                    }
+
                 }
                 else -> super.handleMessage(msg)
             }
@@ -75,54 +69,80 @@ class ListeningService: Service() {
     }
 
     override fun onBind(p0: Intent?): IBinder? {
-        Log.d("SRC", "Service: onBind")
-        Toast.makeText(applicationContext, "Bind", Toast.LENGTH_SHORT).show()
         return messenger.binder
     }
 
+
+
+
+    override fun startMediaPlayer() {
+        mediaPlayer = MediaPlayer.create(this, Uri.parse(defaultRecordItem!!.path))
+        mediaPlayer?.start()
+    }
+
+    override fun playMediaPlayer() {
+        mediaPlayer?.start()
+    }
+
+    override fun stopMediaPlayer() {
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(this, Uri.parse(defaultRecordItem!!.path))
+    }
+
+    override fun pauseMediaPlayer() {
+        mediaPlayer?.pause()
+        //resetPlaying.invoke()
+    }
+
+    override fun releaseMediaPlayer() {
+        mediaPlayer?.reset()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
+    override fun completionMediaPlayerBehavior() {
+        mediaPlayer?.setOnCompletionListener {
+            getNotificationManager().notify(LISTENING_NOTIFICATION_ID, createPlayNotification(defaultRecordItem!!.name))
+            stopMediaPlayer()
+        }
+    }
+
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         intent?.let {
-            defaultRecordItem = intent.extras?.getParcelable<RecordItem>("RECORD ITEM KEY")
-            Log.d("SRC", "Service: onStartCommand ${defaultRecordItem == null}")
-            val name = defaultRecordItem?.name ?: "default"
+            val recordItem = intent.extras?.getParcelable<RecordItem>("RECORD ITEM KEY")
+            if (recordItem != null) {
+                this.defaultRecordItem = recordItem
+            }
             when(it.action) {
                 ACTION_START -> {
                     startForeground(LISTENING_NOTIFICATION_ID, createPauseNotification(defaultRecordItem!!.name))
-                    mediaPlayer = MediaPlayer.create(this, Uri.parse(defaultRecordItem?.path))
-                    mediaPlayer?.start()
+                    releaseMediaPlayer()
+                    startMediaPlayer()
+                    completionMediaPlayerBehavior()
                 }
                 ACTION_PLAY -> {
-                    startForeground(LISTENING_NOTIFICATION_ID, createPauseNotification("defaultRecordItem!!.name"))
-                    mediaPlayer?.start()
+                    playNotificationChange()
+                    playMediaPlayer()
                 }
                 ACTION_PAUSE -> {
-                    startForeground(LISTENING_NOTIFICATION_ID, createPlayNotification("defaultRecordItem!!.name"))
-                    mediaPlayer?.pause()
+                    pauseNotificationChange()
+                    pauseMediaPlayer()
                 }
                 ACTION_STOP -> {
-                    startForeground(LISTENING_NOTIFICATION_ID, createPlayNotification(defaultRecordItem!!.name))
-                    mediaPlayer?.stop()
-                    mediaPlayer?.release()
-                    mediaPlayer = MediaPlayer.create(this, Uri.parse(defaultRecordItem!!.path))
-
-                    //stopForeground(true)
-                    //stopSelf()
-                    // getNotificationManager().cancel(LISTENING_NOTIFICATION_ID)
+                    stopNotificationChange()
+                    stopMediaPlayer()
+                }
+                ACTION_EXIT -> {
+                    releaseMediaPlayer()
+                    stopForeground(true)
+                    stopSelf()
                 }
                 else -> startForeground(LISTENING_NOTIFICATION_ID, createPlayNotification(defaultRecordItem!!.name))
             }
         }
         return START_NOT_STICKY
-    }
-
-    override fun onUnbind(intent: Intent?): Boolean {
-        Log.d("SRC", "Service: onUnbind")
-        return super.onUnbind(intent)
-    }
-
-    override fun onRebind(intent: Intent?) {
-        super.onRebind(intent)
-        Log.d("SRC", "Service: onRebind")
     }
 
     override fun onDestroy() {
@@ -132,6 +152,18 @@ class ListeningService: Service() {
 
     inner class LocalBinder: Binder() {
         fun getService() = this@ListeningService
+    }
+
+    override fun playNotificationChange() {
+        getNotificationManager().notify(LISTENING_NOTIFICATION_ID, createPauseNotification(defaultRecordItem!!.name))
+    }
+
+    override fun stopNotificationChange() {
+        getNotificationManager().notify(LISTENING_NOTIFICATION_ID, createPlayNotification(defaultRecordItem!!.name))
+    }
+
+    override fun pauseNotificationChange() {
+        getNotificationManager().notify(LISTENING_NOTIFICATION_ID, createPlayNotification(defaultRecordItem!!.name))
     }
 
 }

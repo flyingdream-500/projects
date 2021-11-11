@@ -2,6 +2,7 @@ package com.example.voicerecorderapp.presentation.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.voicerecorderapp.data.RecordItem
@@ -18,7 +19,10 @@ class RecordViewHolder(
         recordItemBinding.name.text = item.name
         itemView.setOnClickListener {
             playing.invoke(item, itemView.context)
+            item.isPlaying = true
+            //recordItemBinding.playingAnimation.visibility = View.VISIBLE
         }
+        if (item.isPlaying) recordItemBinding.playingAnimation.visibility = View.VISIBLE else recordItemBinding.playingAnimation.visibility = View.GONE
     }
 
     companion object {

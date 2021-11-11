@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class RecordItem(
     val name: String,
     val path: String,
-    val size: Long
+    val size: Long,
+    var isPlaying: Boolean = false
 ) : Parcelable

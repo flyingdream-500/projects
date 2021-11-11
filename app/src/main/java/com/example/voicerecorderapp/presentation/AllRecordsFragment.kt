@@ -29,6 +29,8 @@ class AllRecordsFragment : Fragment() {
     private val binding
         get() = _binding!!
 
+    private val recordsAdapter = RecordsAdapter(::playingTrack)
+
     private var bound = false
     private var mService: ListeningService? = null
     private var messenger: Messenger? = null
@@ -45,8 +47,8 @@ class AllRecordsFragment : Fragment() {
             Log.d("SRC", "fragment response")
             when(msg.what) {
                 MSG_RESPONSE -> {
-                    requireContext().unbindService(mConnection)
-                    Toast.makeText(requireContext(), "Response in Fragment", Toast.LENGTH_SHORT).show()
+                    //requireContext().unbindService(mConnection)
+                    resetRecordItems()
                 }
                 MSG_UNBIND -> {
                     requireContext().unbindService(mConnection)
@@ -54,6 +56,12 @@ class AllRecordsFragment : Fragment() {
                 else -> super.handleMessage(msg)
             }
         }
+    }
+
+    fun resetRecordItems() {
+        val items = recordsAdapter.getRecordItems()
+        items.forEach { it.isPlaying = false }
+        (binding.rvRecords.adapter as RecordsAdapter).setRecordItems(items)
     }
 
     private fun playingTrack(recordItem: RecordItem, context: Context) {
@@ -67,10 +75,15 @@ class AllRecordsFragment : Fragment() {
             messenger?.let {
                 it.send(message)
             }*/
+            resetRecordItems()
             val intent = Intent(context, ListeningService::class.java)
             intent.action = ListeningService.ACTION_START
             intent.putExtra("RECORD ITEM KEY", recordItem)
-            context.startService(intent)
+            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(intent)
+            } else {*/
+                context.startService(intent)
+            //}
         }
     }
 
@@ -95,7 +108,7 @@ class AllRecordsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
+        sendMessageToService()
     }
 
     override fun onStart() {
@@ -103,6 +116,15 @@ class AllRecordsFragment : Fragment() {
         val intent = Intent(requireContext(), ListeningService::class.java)
         //requireContext().startService(intent)
         requireContext().bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
+
+    }
+
+    fun sendMessageToService() {
+        if (bound) {
+            val message = Message.obtain(null, ListeningService.MSG_EXAMPLE, 0, 0)
+            message.replyTo = clientMessenger
+            messenger?.send(message)
+        }
     }
 
     override fun onStop() {
@@ -142,17 +164,17 @@ class AllRecordsFragment : Fragment() {
         files?.let {
             val recordItems = it.map {
                 RecordItem(
-                    it.name,
+                    it.name.recordName(),
                     it.path,
                     it.sizeInKb()
                 )
             }
-            val adapter = RecordsAdapter(::playingTrack)
+
 
             binding.rvRecords.apply {
-                this.adapter = adapter
+                this.adapter = recordsAdapter
                 addVerticalDivider(requireContext())
-                adapter.setRecordItems(recordItems)
+                recordsAdapter.setRecordItems(recordItems)
             }
         }
 
@@ -165,6 +187,8 @@ class AllRecordsFragment : Fragment() {
             //Toast.makeText(this, "addFile: createNewFile Error", Toast.LENGTH_LONG).show()
         }*/
     }
+
+    fun String.recordName() = substringBeforeLast(".")
 
     private fun permissions() {
         if (requireContext().checkPermission()) {

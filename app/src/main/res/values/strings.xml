@@ -3,4 +3,8 @@
 
     <string name="listening_notification_name">Listening</string>
     <string name="listening_notification_description">Listening of voice records</string>
+
+    <string name="recording_notification_name">Recording</string>
+    <string name="recording_notification_description">Recording of voice </string>
+
 </resources>

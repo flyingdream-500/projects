@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo"
@@ -13,9 +13,8 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_recording"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/name"
-        app:layout_constraintBottom_toBottomOf="@id/name"
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -26,17 +25,32 @@
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginHorizontal="16dp"
-        android:fontFamily="@font/louis_george_cafe_bold"
-        android:text="Recording in 31-10-2021"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/playing_animation"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Recording in 31-10-2021"
+        style="@style/RecordItemNameStyle"
+        app:layout_constraintBottom_toTopOf="@id/size"
+        app:layout_constraintEnd_toStartOf="@id/listening_animation"
         app:layout_constraintStart_toEndOf="@id/logo"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        tools:text="34 kb"
+        style="@style/RecordSizeStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/listening_animation"
+        app:layout_constraintStart_toEndOf="@id/logo"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/playing_animation"
+        android:id="@+id/listening_animation"
         android:layout_width="48dp"
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"

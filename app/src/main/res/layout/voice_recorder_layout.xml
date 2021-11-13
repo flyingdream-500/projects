@@ -23,14 +23,11 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
+        android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/beon_webfont"
-        android:text="00:00:00"
-        android:textColor="@color/black"
-        android:textSize="48sp"
-        android:textStyle="bold"
+        android:text="@string/default_time"
+        style="@style/TimerTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_up"
@@ -38,42 +35,53 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/playing_animation"
+        android:id="@+id/recording_animation"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
-        app:layout_constraintVertical_bias="0.398"
-        app:lottie_autoPlay="true"
+        app:layout_constraintTop_toBottomOf="@+id/timer"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+        app:layout_constraintVertical_bias="0.4"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/microphone_recording"
         app:lottie_repeatMode="restart"
+        app:lottie_rawRes="@raw/microphone_recording"
+        android:visibility="visible"
         tools:src="@drawable/ic_voice_recorder_mic" />
 
+
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/play"
+        android:id="@+id/start"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+        android:src="@drawable/ic_start"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/play"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
         android:src="@drawable/ic_play"
         />
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/pause"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_marginHorizontal="16dp"
         android:visibility="gone"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
-        app:layout_constraintEnd_toStartOf="@id/stop"
         android:src="@drawable/ic_pause"
         />
 
@@ -82,9 +90,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="16dp"
         android:visibility="gone"
-        app:layout_constraintStart_toEndOf="@id/pause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
         android:src="@drawable/ic_stop"

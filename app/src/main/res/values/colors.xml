@@ -12,7 +12,6 @@
     <color name="background_color">#3669F4</color>
     <color name="selectedColor">#FFFFFF</color>
     <color name="unselectedColor">#9C9C9C</color>
-    <color name="button">#F44336</color>
 
-    <color name="status_bar">#003F63</color>
+    <color name="dark_blue">#003F63</color>
 </resources>

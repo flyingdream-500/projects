@@ -7,10 +7,8 @@
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notif_play.xml" value="0.2703125" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notify_pause.xml" value="0.2703125" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notify_stop.xml" value="0.2703125" />
-        <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_recording.xml" value="0.2703125" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_voice_recorder_mic.xml" value="0.2703125" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/listening_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/recording_background.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/tab_background.xml" value="0.2703125" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/tab_layout_bg.xml" value="0.2703125" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/drawable/tabs_selector.xml" value="0.2703125" />
@@ -18,16 +16,50 @@
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/all_records_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/fragment_voice_recorder.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_layout.xml" value="0.5215827338129496" />
-        <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_pause_layout.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_play_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/record_item.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_pause_layout.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_play_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ildar/AndroidStudioProjects/VoiceRecorderApp/app/src/main/res/layout/voice_recorder_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_close.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notif_close.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notif_pause.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notif_play.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_notif_stop.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_pause.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_play.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_recording.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_start.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_stop.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/ic_voice_recorder_mic.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/listening_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/recording_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/tab_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/tab_layout_bg.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/drawable/tabs_selector.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/all_records_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_collapsed_notification_pause_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_collapsed_notification_play.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_collapsed_notification_play_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_pause_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_pause_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_play.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_play_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/listening_notification_play_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/record_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_collapsed_notification_pause_stop.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_collapsed_notification_play.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_collapsed_notification_play_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_pause_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_pause_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_play.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_play_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/recording_notification_play_stop.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/VoiceRecorderApp/app/src/main/res/layout/voice_recorder_layout.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

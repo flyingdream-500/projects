@@ -1,4 +1,4 @@
-# Clear Arch Currency App
+# Currency Operations App
 ## Превью
 <p align="center">
 <img src="data/second.gif" />

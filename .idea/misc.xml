@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/drawable/authentication_background.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/drawable/bottom_view_rounded.xml" value="0.3768518518518518" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/drawable/ic_add.xml" value="0.3768518518518518" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/drawable/ic_ca.xml" value="0.3768518518518518" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/bank_card_transaction_item.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/bottom_sheet_authentication.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/dialog_change_name_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/dialog_error.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/fragment_card_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/fragment_currency_detail_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/fragment_currency_list_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/fragment_main_screen.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/fragment_transactions_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/item_currency.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/item_operation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/layout/main_card_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ildar/StudioProjects/FinalProject/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36102564102564105" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

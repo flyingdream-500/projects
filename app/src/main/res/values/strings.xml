@@ -1,3 +1,90 @@
 <resources>
     <string name="app_name">FinalProject</string>
+
+    <!--bank card resources-->
+    <string name="bank_name">HZ BANK</string>
+    <string name="balance_title">Balance:</string>
+
+    <!--detail screen fragment-->
+    <string name="currency_detail_toolbar">Buy the currency</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="rate_default_hint">0</string>
+
+    <!--main screen fragment-->
+    <string name="currency_title">Currency</string>
+    <string name="see_all">See all</string>
+    <string name="good_morning">Good Morning,</string>
+    <string name="user_name">%1$s %2$s</string>
+
+    <!--currency item-->
+    <string name="item_logo">Item logo</string>
+
+    <!--network error dialog-->
+    <string name="unknown_error">Unknown error</string>
+    <string name="unknown_balance">Unknown error with balance. Reinstall app.</string>
+    <string name="buy">BUY</string>
+
+    <!--balance-->
+    <string name="set_balance">\u0024 %,.2f</string>
+
+    <!--bottom navigation view-->
+    <string name="home">Home</string>
+    <string name="cards">Cards</string>
+    <string name="profile">Profile</string>
+    <string name="setting">Settings</string>
+    <string name="transactions">Transactions</string>
+    <string name="settings">Settings</string>
+
+    <!--settings-->
+    <string name="hint_name">Name</string>
+    <string name="hint_surname">Surname</string>
+    <string name="change_username">Change username</string>
+    <string name="change_avatar">Change avatar</string>
+    <string name="user_settings">Profile</string>
+    <string name="auth_title">Enable authentication for currency transactions</string>
+    <string name="authentication_title">Confirmation of a currency transaction</string>
+    <string name="change_profile">Change Profile</string>
+    <string name="positive_button">OK</string>
+    <string name="operations">Operations</string>
+
+    <!--sms receiver-->
+    <string name="phone_number">Phone number: %1$s</string>
+    <string name="wrong_phone_number">Inappropriate number</string>
+    <string name="permissions_granted">Permission Granted</string>
+    <string name="permissions_denied">Permission Denied</string>
+
+
+    <!--currency symbols-->
+    <string name="us_character">%,.2f \u0024</string>     <!--Символ американского доллара-->
+    <string name="ca_character">%,.2f \u0024</string>     <!--Символ канадского доллара-->
+    <string name="ch_character">%,.2f \u20a3</string>     <!--Символ китайского юаня-->
+    <string name="cn_character">%,.2f \u00a5</string>     <!--Символ китайского юаня-->
+    <string name="dk_character">%,.2f DKR</string>        <!--Символ датской кроны-->
+    <string name="er_character">%,.2f \u20ac</string>     <!--Символ евро-->
+    <string name="gb_character">%,.2f \u00a3</string>     <!--Символ фунта стерлингов-->
+    <string name="jp_character">%,.2f \u00a5</string>     <!--Символ японской иены-->
+    <string name="no_character">%,.2f NKR</string>        <!--Символ норвежской кроны-->
+    <string name="ru_character">%,.2f \u20bd</string>     <!--Символ российского рубля-->
+    <string name="se_character">%,.2f SEK</string>        <!--Символ шведской кроны-->
+    <string name="sg_character">%,.2f \u0024</string>     <!--Символ сингапурского доллара-->
+
+    <!--transactions-->
+    <string name="transaction_title">Buying currency</string>
+    <string name="transaction_added">The currency purchase was successful</string>
+    <string name="transaction_not_added">The currency purchase was not successful</string>
+    <string name="retry">RETRY</string>
+    <string name="no_transactions">No Transactions</string>
+    <string name="gb_fullname">Фунт стерлингов</string>
+    <string name="er_fullname">Евро</string>
+    <string name="ch_fullname">Швейцарский франк</string>
+    <string name="ca_fullname">Канадский доллар</string>
+    <string name="sg_fullname">Сингапурский доллар</string>
+    <string name="cn_fullname">Китайский юань</string>
+    <string name="dk_fullname">Датская крона</string>
+    <string name="no_fullname">Норвежская крона</string>
+    <string name="se_fullname">Шведская крона</string>
+    <string name="ru_fullname">Российский рубль</string>
+    <string name="jp_fullname">Иена</string>
+
 </resources>

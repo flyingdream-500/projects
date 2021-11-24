@@ -1,6 +1,8 @@
 
 plugins {
     id ("com.android.application")
+    id ("dagger.hilt.android.plugin")
+    id("kotlin-parcelize")
     kotlin("android")
     kotlin("kapt")
 }
@@ -48,6 +50,7 @@ dependencies {
     implementation (Dependencies.Base.coreKtx)
     implementation (Dependencies.Base.material)
     implementation (Dependencies.Base.constraintLayout)
+    implementation (Dependencies.Base.legacySupport)
 
     //Navigation
     implementation (Dependencies.Navigation.navigationFragment)
@@ -73,8 +76,28 @@ dependencies {
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.daggerCompiler)
 
+    //Hilt
+    implementation(Dependencies.Hilt.hilt)
+    kapt(Dependencies.Hilt.hiltCompiler)
+    //HiltExtension
+    implementation(Dependencies.HiltExtension.hiltExtension)
+    kapt(Dependencies.HiltExtension.hiltExtensionCompiler)
+
+    //Glide
+    implementation(Dependencies.Glide.glide)
+    kapt(Dependencies.Glide.glideCompiler)
+
+
+    //Room
+    implementation(Dependencies.Room.room)
+    implementation(Dependencies.Room.roomKtx)
+    implementation(Dependencies.Room.roomRxJava)
+    kapt(Dependencies.Room.roomCompiler)
+
     //Test
     testImplementation (Dependencies.Test.jUnit)
     androidTestImplementation (Dependencies.Test.androidJUnit)
     androidTestImplementation (Dependencies.Test.espresso)
+
+
 }

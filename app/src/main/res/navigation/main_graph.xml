@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainScreen">
+
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="com.example.finalproject.presentation.navigation.MainScreen"
+        android:label="fragment_main_screen"
+        tools:layout="@layout/fragment_main_screen">
+        <action
+            android:id="@+id/action_mainScreen_to_currencyListScreen"
+            app:destination="@id/currencyListScreen"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/currencyListScreen"
+        android:name="com.example.finalproject.presentation.navigation.CurrencyListScreen"
+        android:label="fragment_currency_list_screen"
+        tools:layout="@layout/fragment_currency_list_screen" />
+    <fragment
+        android:id="@+id/currencyDetailScreen"
+        android:name="com.example.finalproject.presentation.navigation.CurrencyDetailScreen"
+        android:label="fragment_currency_detail_screen"
+        tools:layout="@layout/fragment_currency_detail_screen" />
+    <fragment
+        android:id="@+id/settingsScreen"
+        android:name="com.example.finalproject.presentation.navigation.SettingsScreen"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings"/>
+    <fragment
+        android:id="@+id/transactionsScreen"
+        android:name="com.example.finalproject.presentation.navigation.TransactionsScreen"
+        android:label="fragment_transactions"
+        tools:layout="@layout/fragment_transactions_screen"/>
+
+    <fragment
+        android:id="@+id/bankCardsScreen"
+        android:name="com.example.finalproject.presentation.navigation.BankCardsScreen"
+        android:label="fragment_cards"
+        tools:layout="@layout/fragment_card_screen"/>
+</navigation>

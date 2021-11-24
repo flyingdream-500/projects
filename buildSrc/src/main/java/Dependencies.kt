@@ -7,11 +7,13 @@ object Dependencies {
         private const val coreKtxVersion = "1.7.0"
         private const val appCompatVersion = "1.3.1"
         private const val constraintLayoutVersion = "2.1.1"
+        private const val legacySupportVersion = "1.0.0"
 
         const val material = "com.google.android.material:material:$materialVersion"
         const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
         const val appcompat = "androidx.appcompat:appcompat:$appCompatVersion"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+        const val legacySupport = "androidx.legacy:legacy-support-v4:$legacySupportVersion"
     }
 
     object Test {
@@ -43,7 +45,6 @@ object Dependencies {
         private const val rxVersion = "3.0.0"
         const val rxJava = "io.reactivex.rxjava3:rxjava:$rxVersion"
         const val rxAndroid = "io.reactivex.rxjava3:rxandroid:$rxVersion"
-        val list = arrayListOf<String>(rxJava, rxAndroid)
     }
 
     object Lottie {
@@ -56,5 +57,33 @@ object Dependencies {
         const val dagger = "com.google.dagger:dagger:$daggerVersion"
         const val daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
     }
+
+    object Hilt {
+        private const val hiltVersion = "2.36"
+        const val hilt = "com.google.dagger:hilt-android:$hiltVersion"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
+    }
+
+    object HiltExtension {
+        private const val hiltExtensionVersion = "1.2.0"
+        const val hiltExtension = "it.czerwinski.android.hilt:hilt-extensions:$hiltExtensionVersion"
+        const val hiltExtensionCompiler = "it.czerwinski.android.hilt:hilt-processor:$hiltExtensionVersion"
+    }
+
+    object Room {
+        private const val roomVersion = "2.3.0"
+        const val room = "androidx.room:room-runtime:$roomVersion"
+        const val roomKtx = "androidx.room:room-ktx:$roomVersion"
+        const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+        const val roomRxJava = "androidx.room:room-rxjava3:$roomVersion"
+    }
+
+    object Glide {
+        private const val glideVersion = "4.12.0"
+        const val glide = "com.github.bumptech.glide:glide:$glideVersion"
+        const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
+    }
+
+
 
 }

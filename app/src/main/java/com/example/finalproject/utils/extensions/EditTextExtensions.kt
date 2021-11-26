@@ -10,9 +10,12 @@ import com.example.finalproject.utils.extensions.BaseExtensions.targetRatedBalan
 import com.example.finalproject.utils.inputfilters.NumbersInputFilter
 import java.math.RoundingMode
 
+
 object EditTextExtensions {
 
-    // Обновление поля ввода базовой валюты
+    /**
+     * Обновление поля ввода базовой валюты
+     */
     fun EditText.baseUpdate(
         text: Editable?,
         isFocused: Boolean,
@@ -30,7 +33,10 @@ object EditTextExtensions {
         }
     }
 
-    // Обновление поля ввода целевой валюты
+
+    /**
+     * Обновление поля ввода целевой валюты
+     */
     fun EditText.targetUpdate(
         text: Editable?,
         isFocused: Boolean,
@@ -48,14 +54,19 @@ object EditTextExtensions {
         }
     }
 
-    // Устанавливаем InputFilters для EditText
+
+    /**
+     * Устанавливаем InputFilters для EditText
+     */
     fun EditText.initDetailInputFilters(rate: Float, balance: Float) {
         val limitFilter = NumbersInputFilter.MinMaxInputFilter(0f, balance * rate)
         val decimalFilter = NumbersInputFilter.DecimalDigitsInputFilter()
         this.filters = arrayOf(decimalFilter, limitFilter)
     }
 
-    // Размещаем изображение целевого курса валют справа от поля ввода
+    /**
+     * Размещаем изображение целевого курса валют справа от поля ввода
+     */
     fun EditText.rightDrawable(@DrawableRes id: Int = 0, @DimenRes sizeRes: Int) {
         val drawable = ContextCompat.getDrawable(context, id)
         val size = resources.getDimensionPixelSize(sizeRes)

@@ -8,10 +8,13 @@ import java.util.regex.Pattern
 object NumbersInputFilter {
 
     private const val regex = "[0-9]*+((\\.[0-9]?)?)||(\\.)?"
+    private val mPattern: Pattern = Pattern.compile(regex)
 
-    //InputFilter ограничивает до 2 знаков после точки
+    /**
+     * InputFilter ограничивает до 2 знаков после точки
+     */
     class DecimalDigitsInputFilter : InputFilter {
-        var mPattern: Pattern
+
         override fun filter(
             source: CharSequence,
             start: Int,
@@ -24,18 +27,16 @@ object NumbersInputFilter {
             return if (!matcher.matches()) "" else null
         }
 
-        init {
-            mPattern = Pattern.compile(regex)
-        }
     }
 
-    //InputFilter ограничивает поле ввода до максимальной доступной суммы
+
+    /**
+     * InputFilter ограничивает поле ввода до максимальной доступной суммы
+     */
     class MinMaxInputFilter(
         private var min: Float,
         private var max: Float
     ) : InputFilter {
-
-
         override fun filter(
             source: CharSequence,
             start: Int,

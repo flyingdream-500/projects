@@ -15,10 +15,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-/**
- * Модуль биндинга
- */
 
+/**
+ * Модуль биндинга конвертеров
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataBindModule {
@@ -37,6 +37,9 @@ abstract class DataBindModule {
     ): CurrentCurrencyConverter
 }
 
+/**
+ * Модуль биндинга репозиторий
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryBindModule {
@@ -56,15 +59,18 @@ abstract class RepositoryBindModule {
     abstract fun bindSettingsRepositoryImpl_to_SettingsRepository(settingsRepositoryImpl: SettingsRepositoryImpl): SettingsRepository
 }
 
+/**
+ * Модуль биндинга интеракторов
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class InteractorBindModule {
+
     @Binds
     abstract fun bindTransactionInteractorImpl_to_TransactionInteractor(transactionsInteractorImpl: TransactionsInteractorImpl): TransactionInteractor
 
     @Binds
     abstract fun bindCurrencyInteractorImpl_to_CurrencyInteractor(currencyInteractorImpl: CurrencyInteractorImpl): CurrencyInteractor
-
 
     @Binds
     abstract fun bindUserInteractorImpl_to_UserInteractor(userInteractorImpl: UserInteractorImpl): UserInteractor

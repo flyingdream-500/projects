@@ -24,4 +24,5 @@ data class CurrencyTransaction(
     val baseLogo: Int,
     @DrawableRes
     val targetLogo: Int,
-    val date: String)
+    val date: String
+)

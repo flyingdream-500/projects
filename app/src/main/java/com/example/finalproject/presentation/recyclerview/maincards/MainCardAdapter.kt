@@ -4,11 +4,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.model.bankcard.BankCard
 
+/**
+ * Адаптер для отображения банковских карт
+ * @see mainCards - список банковских карт [BankCard]
+ */
 class MainCardAdapter :  RecyclerView.Adapter<MainCardViewHolder>() {
-    private var bankCards: List<BankCard> = arrayListOf()
+    private var mainCards: List<BankCard> = emptyList()
 
     fun setBankCards(bankCards: List<BankCard>) {
-        this.bankCards = bankCards
+        this.mainCards = bankCards
         notifyDataSetChanged()
     }
 
@@ -17,10 +21,10 @@ class MainCardAdapter :  RecyclerView.Adapter<MainCardViewHolder>() {
     }
 
     override fun onBindViewHolder(holderMain: MainCardViewHolder, position: Int) {
-        holderMain.bind(bankCards.get(position))
+        holderMain.bind(mainCards[position])
     }
 
     override fun getItemCount(): Int {
-        return bankCards.size
+        return mainCards.size
     }
 }

@@ -1,5 +1,8 @@
 package com.example.finalproject.utils.constants
 
+/**
+ * Константы для БД
+ */
 object DataBaseConstants {
     const val DATABASE_NAME = "currencies_base.db"
     const val DATABASE_VERSION = 1

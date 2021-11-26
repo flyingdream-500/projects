@@ -1,11 +1,7 @@
 package com.example.finalproject.model.network
 
-import androidx.room.Embedded
-import androidx.room.PrimaryKey
-
 /**
- * Дата класс модели валюты с привязкой к дате.
- *
+ * Дата класс модели со списком курсов валют и датой получения ответа от сервера
  * @param date      дата полученных данных о курсах валют
  * @param usd       базовая валюта, в данном случае Доллар США
  */
@@ -13,7 +9,6 @@ data class CurrentCurrency(
     val date: String,
     val usd: Rates
 )
-
 
 /**
  * Переменные класса содержат информацию о курсе валют к Доллару США

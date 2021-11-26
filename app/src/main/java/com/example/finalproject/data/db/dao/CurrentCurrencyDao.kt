@@ -9,6 +9,10 @@ import com.example.finalproject.utils.constants.DataBaseConstants.CURRENCY_TABLE
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
 
+
+/**
+ * Dao с методами взаимодействия с БД курсов валют
+ */
 @Dao
 interface CurrentCurrencyDao {
 

@@ -1,33 +1,47 @@
 package com.example.finalproject.domain.usecase
 
+import com.example.finalproject.data.network.api.OkHttpCurrencyApiImpl
+import com.example.finalproject.data.repository.CurrencyRepositoryImpl
 import com.example.finalproject.domain.repository.CurrencyRepository
 import com.example.finalproject.domain.usecase.interfaces.CurrencyInteractor
 import com.example.finalproject.model.currency.CurrentCurrencyItem
 import com.example.finalproject.domain.converter.CurrentCurrencyItemConverter
+import com.example.finalproject.domain.converter.CurrentCurrencyItemConverterImpl
+import com.example.finalproject.model.network.CurrentCurrency
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 
 /**
- * UseCases для работы с курсом валют и обращение к соответсвущим методам
+ * Конкретная реализация интерфейса [CurrencyInteractor] для работы с курсами валют
  * Параметры:
- * @see currencyRepository реализован в классе [com.example.cleararchcurrency.data.repository.CurrencyRepositoryImpl]
- * Экземпляр класса передается в [com.example.cleararchcurrency.presentation.viewmodel.SharedViewModel]
+ * @param currencyRepository репозиторий по работе с курсами валют, реализован в классе [CurrencyRepositoryImpl]
+ * @param itemConverter конвертер для преобразования класса [CurrentCurrency] в [CurrentCurrencyItem],  реализован в классе [CurrentCurrencyItemConverterImpl]
  */
 class CurrencyInteractorImpl(
     private val currencyRepository: CurrencyRepository,
     private val itemConverter: CurrentCurrencyItemConverter
     ) : CurrencyInteractor {
 
-    override fun getFromDb(): Maybe<CurrentCurrencyItem> {
-        return currencyRepository.getFromDb()
+    /**
+     * Метод для получения класса с курсами валют из БД
+     */
+    override fun getCurrentCurrencyItem(): Maybe<CurrentCurrencyItem> {
+        return currencyRepository.getCurrentCurrencyItem()
     }
 
-    override fun addingToDb(currentCurrencyItem: CurrentCurrencyItem): Completable {
-        return currencyRepository.addingToDb(currentCurrencyItem)
+    /**
+     * Метод для добавления класса с курсами валют в БД
+     * @param currentCurrencyItem - класс с курсами валют
+     */
+    override fun addCurrentCurrencyItem(currentCurrencyItem: CurrentCurrencyItem): Completable {
+        return currencyRepository.addCurrentCurrencyItem(currentCurrencyItem)
     }
 
-    override fun remoteCurrentCurrency(): Single<CurrentCurrencyItem> {
+    /**
+     * Метод для получения данных через интернет из API, реализация в [OkHttpCurrencyApiImpl] и последующая конвертация в [CurrentCurrencyItem]
+     */
+    override fun getRemoteCurrentCurrency(): Single<CurrentCurrencyItem> {
         return currencyRepository.getRemoteCurrentCurrency().map(itemConverter::convertToCurrentCurrencyItem)
     }
 }

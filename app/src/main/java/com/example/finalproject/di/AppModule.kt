@@ -76,7 +76,6 @@ class NetworkModule {
 @InstallIn(SingletonComponent::class)
 class DataBase {
 
-
     @Singleton
     @Provides
     fun provideDatabase(application: Application, moshi: Moshi): Database {
@@ -132,7 +131,7 @@ class DataBase {
 }
 
 /**
- * Модуль для провайда SharedPreferences
+ * Модуль для провайда SharedPreferences и ContentResolver
  */
 @Module
 @InstallIn(SingletonComponent::class)

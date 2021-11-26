@@ -69,4 +69,7 @@
     <dimen name="settings_item_size">17sp</dimen>
     <dimen name="settings_description_size">15sp</dimen>
 
+    <!--My Cards-->
+    <dimen name="description_size">16sp</dimen>
+
 </resources>

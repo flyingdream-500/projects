@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +15,13 @@ import com.example.finalproject.model.user.User
 import com.example.finalproject.presentation.dialog.ErrorDialog
 import com.example.finalproject.presentation.dialog.settings.NameChangeDialog
 import com.example.finalproject.presentation.viewmodel.SettingsViewModel
-import com.example.finalproject.utils.common.Settings.saveAvatarToExternalFilesDir
 import com.example.finalproject.utils.common.Settings.takePhotoIntent
-import com.example.finalproject.utils.constants.SettingsConstants.AVATAR_FILE_NAME
-import com.example.finalproject.utils.constants.SettingsConstants.CHANGE_NAME_TAG
-import com.example.finalproject.utils.constants.SettingsConstants.GET_IMAGE_REQUEST_CODE
-import com.example.finalproject.utils.constants.UrlConstants
+import com.example.finalproject.utils.constants.DefaultConstants.AVATAR_FILE_NAME
+import com.example.finalproject.utils.constants.FragmentConstants.CHANGE_NAME_TAG
+import com.example.finalproject.utils.constants.FragmentConstants.DATABASE_ERROR_TAG
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
+import java.util.*
 
 
 /**
@@ -32,13 +30,14 @@ import java.io.File
 @AndroidEntryPoint
 class SettingsScreen : Fragment() {
 
-    private val settingsViewModel: SettingsViewModel by viewModels()
 
+    private val settingsViewModel: SettingsViewModel by viewModels()
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding
         get() = _binding!!
 
+    // Экземпляр класса пользователя
     private var currentUser: User? = null
 
     override fun onCreateView(
@@ -52,57 +51,88 @@ class SettingsScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initUserData()
+        initAuthentication()
+        initNameField()
+        initAvatarField()
+    }
+
+
+    /**
+     * Метод инициализирует поле смены имени пользователя
+     */
+    private fun initNameField() {
+        binding.settingsName.root.setOnClickListener {
+            NameChangeDialog().show(parentFragmentManager, CHANGE_NAME_TAG)
+        }
+    }
+
+    /**
+     * Метод инициализирует поле установки аватара
+     */
+    private fun initAvatarField() {
+        binding.settingsAvatar.root.setOnClickListener {
+            startActivityForResult(takePhotoIntent(), GET_IMAGE_REQUEST_CODE)
+        }
+    }
+
+
+    /**
+     * Метод инициализирует поле аутентификации
+     */
+    private fun initAuthentication() {
+        binding.settingsAuthentication.checkAuthentication.apply {
+            isChecked = settingsViewModel.getSettingsAuth()
+            setOnCheckedChangeListener  { _, b ->
+                settingsViewModel.setSettingsAuth(b)
+            }
+        }
+    }
+
+    /**
+     * Метод запрашивает данные по пользователю и подписывается на их изменения
+     */
+    private fun initUserData() {
+
+        //наблюдение за данными пользователя
         settingsViewModel.observeUser().observe(viewLifecycleOwner) { user ->
             currentUser = user
             currentUser?.let {
-                Log.d("TAGGG", "observe: ${it.avatar.toString()}")
-                binding.settingsName.nameSummary.text = "${it.name} ${it.surname}"
+                binding.settingsName.nameSummary.text = String.format(getString(R.string.user_name), it.name, it.surname)
                 binding.settingsAvatar.avatarImage.setImageURI(Uri.parse(it.avatar))
             }
         }
 
+        // наблюдение за ошибками
         settingsViewModel.observeUserError().observe(viewLifecycleOwner) { throwable ->
             throwable?.let {
                 ErrorDialog(it.message, R.drawable.data_base_error).show(
                     parentFragmentManager,
-                    UrlConstants.DATABASE_ERROR_TAG
+                    DATABASE_ERROR_TAG
                 )
             }
         }
 
-        binding.settingsAuthentication.checkAuthentication.isChecked = settingsViewModel.getSettingsAuth()
-
-
-        binding.settingsName.root.setOnClickListener {
-            NameChangeDialog(
-                currentUser,
-                settingsViewModel::saveUser
-            ).show(parentFragmentManager, CHANGE_NAME_TAG)
-        }
-
-        binding.settingsAuthentication.checkAuthentication.setOnCheckedChangeListener  { _, b ->
-            settingsViewModel.setSettingsAuth(b)
-        }
-
-        binding.settingsAvatar.root.setOnClickListener {
-            startActivityForResult(takePhotoIntent(), GET_IMAGE_REQUEST_CODE)
-        }
-
         settingsViewModel.getUser()
-
     }
 
+    /**
+     * Получаем uri выбранного изображения и сохраняем:
+     * - изображение для аватара в internal storage
+     * - измененный user в БД
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == GET_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 data?.data?.let { uri ->
-                    val filePath = requireActivity().getExternalFilesDir(null)
-                    val targetFile = File(filePath, AVATAR_FILE_NAME)
+
+                    val targetFile = getAvatarFile()
 
                     settingsViewModel.saveAvatarFile(uri, targetFile)
+
                     val newAvatarUri = Uri.fromFile(targetFile)
                     binding.settingsAvatar.avatarImage.setImageURI(uri)
-                    //binding.settingsAvatar.avatarImage.setImageURI(Uri.parse(newAvatarUri.toString()))
+
                     currentUser?.let {
                         it.avatar = newAvatarUri.toString()
                         settingsViewModel.saveUser(it)
@@ -113,9 +143,23 @@ class SettingsScreen : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    /**
+     * Файл размещения аватара в internal storage
+     */
+    private fun getAvatarFile(): File {
+        val filePath = requireActivity().getExternalFilesDir(null)
+        return File(filePath, AVATAR_FILE_NAME)
+    }
+
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val GET_IMAGE_REQUEST_CODE = 121
     }
 
 }

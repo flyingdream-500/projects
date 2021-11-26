@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/bankCardsScreen"
-        android:name="com.example.finalproject.presentation.navigation.BankCardsScreen"
+        android:name="com.example.finalproject.presentation.navigation.MyCardsScreen"
         android:label="fragment_cards"
         tools:layout="@layout/fragment_card_screen"/>
 </navigation>

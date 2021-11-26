@@ -8,20 +8,24 @@ import io.reactivex.rxjava3.core.Maybe
 
 /**
  * Конкретная реализация репозитория [TransactionsRepository] по работе с выполненными транзакциями
- * Создан в [com.example.cleararchcurrency.presentation.viewmodel.ViewModelFactory]
  * Параметры:
- * @param transactionsDao - интерфейс для работы с БД
+ * @param transactionsDao - интерфейс для работы с БД [TransactionsDao]
  */
 class TransactionsRepositoryImpl(
     private val transactionsDao: TransactionsDao
 ) : TransactionsRepository {
 
-    //получение выполненных транзакции из БД
+    /**
+     * Метод для получения списка транзакции из БД
+     */
     override fun getTransactions(): Maybe<List<CurrencyTransaction>> {
         return transactionsDao.getTransactions()
     }
 
-    //добавление выполненной транзакции в БД
+    /**
+     * Метод для добавления транзакции в БД
+     * @param currencyTransaction - класс выполненной валютной транзакции
+     */
     override fun addTransaction(currencyTransaction: CurrencyTransaction) : Completable {
         return transactionsDao.addTransaction(currencyTransaction)
     }

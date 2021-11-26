@@ -7,29 +7,44 @@ import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.finalproject.R
 import com.example.finalproject.databinding.BottomSheetAuthenticationBinding
+import com.example.finalproject.presentation.navigation.CurrencyDetailScreen
 import com.example.finalproject.presentation.receiver.SmsListener
 import com.example.finalproject.presentation.receiver.SmsReceiver
+import com.example.finalproject.presentation.viewmodel.DetailScreenViewModel
 import com.example.finalproject.utils.common.interfaces.DefaultAnimatorListener
-import com.example.finalproject.utils.constants.SmsReceiverConstants.CALLER_NUMBER
+import com.example.finalproject.utils.constants.DefaultConstants.CALLER_NUMBER
 import com.example.finalproject.utils.permission.ReceiveSmsPermission.checkSmsPermission
 import com.example.finalproject.utils.permission.ReceiveSmsPermission.requestPermissionsResult
 import com.example.finalproject.utils.permission.ReceiveSmsPermission.requestSmsPermission
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.lang.ref.WeakReference
 
+/*Шаблон для отправки кода верификации:
+*   Ваш код подтверждения валютной операции: 895869.
+*   Никому не сообщайте код.
+*/
+
+
 
 /**
- * Диалоговое окно обработки валютной операции
+ * Диалоговое окно обработки валютной операции посредством получения СМС кода подтверждения от номера [CALLER_NUMBER]
  */
+class AuthenticationDialog : BottomSheetDialogFragment(), SmsListener {
 
-
-class AuthenticationDialog(
-    private val buy: () -> Unit
-) : BottomSheetDialogFragment(), SmsListener {
-
+    /**
+     * Приемник для отлавливания СМС сообщений
+     */
     private val smsReceiver = SmsReceiver(WeakReference(this))
+
+    /**
+     * Родительская View Model из фрагмента [CurrencyDetailScreen]
+     */
+    private val detailScreenViewModel: DetailScreenViewModel by viewModels(
+        ownerProducer = {requireParentFragment().childFragmentManager.primaryNavigationFragment!!}
+    )
 
     private var _binding: BottomSheetAuthenticationBinding? = null
     private val binding
@@ -46,6 +61,7 @@ class AuthenticationDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Проверка разрешений на получение СМС
         if (!checkSmsPermission())
             requestSmsPermission()
 
@@ -64,6 +80,10 @@ class AuthenticationDialog(
         unregisterReceiver()
     }
 
+
+    /**
+     * Регистрируем слушателя СМС сообщений
+     */
     private fun registerReceiver() {
         requireContext().registerReceiver(
             smsReceiver,
@@ -71,18 +91,28 @@ class AuthenticationDialog(
         )
     }
 
+    /**
+     * Отписываем слушателя СМС сообщений
+     */
     private fun unregisterReceiver() {
         requireContext().unregisterReceiver(smsReceiver)
     }
 
 
+    /**
+     * Метод для выполнения транзакции и обновления UI после получения кода верификации
+     */
     override fun updateVerificationCode(code: String) {
         if (code.isNotEmpty()) {
-            buy.invoke()
+            detailScreenViewModel.triggerToBuy()
             receiveEvent(code)
         }
     }
 
+
+    /**
+     * Метод для обновления UI после получения кода верификации
+     */
     private fun receiveEvent(code: String) {
         binding.run {
             verifyCode.text = code
@@ -92,6 +122,7 @@ class AuthenticationDialog(
                 playAnimation()
                 addAnimatorListener(object : DefaultAnimatorListener {
                     override fun onAnimationEnd(p0: Animator?) {
+                        detailScreenViewModel.triggerToClose()
                         dialog?.cancel()
                     }
                 })
@@ -100,7 +131,7 @@ class AuthenticationDialog(
     }
 
     /**
-     * Получение результата запроса на разрешения
+     * Получение результата запроса на разрешения СМС
      */
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -117,7 +148,5 @@ class AuthenticationDialog(
         super.onDestroyView()
         _binding = null
     }
-
-
 
 }

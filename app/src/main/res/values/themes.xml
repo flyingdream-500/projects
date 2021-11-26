@@ -32,8 +32,6 @@
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">@dimen/default_text_size</item>
     </style>
-
-
     <style name="Text.Title">
         <item name="android:textSize">@dimen/fragment_title_size</item>
     </style>
@@ -116,6 +114,10 @@
         <item name="android:textSize">@dimen/currency_abbr_size</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
+    <style name="Text.CardDescription">
+        <item name="android:textSize">@dimen/description_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
 
 
 
@@ -195,6 +197,11 @@
 
     <style name="TextView.ErrorMessage">
         <item name="android:textAppearance">@style/TextView.ErrorMessage</item>
+    </style>
+
+    <style name="TextView.CardDescription">
+        <item name="android:textSize">@dimen/description_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
 

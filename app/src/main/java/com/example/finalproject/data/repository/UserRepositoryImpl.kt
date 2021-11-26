@@ -3,24 +3,29 @@ package com.example.finalproject.data.repository
 import com.example.finalproject.data.db.dao.UserDao
 import com.example.finalproject.domain.repository.UserRepository
 import com.example.finalproject.model.user.User
-import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
 
 /**
  * Конкретная реализация репозитория [UserRepository] по работе с настройками
- * Создан в [com.example.cleararchcurrency.presentation.viewmodel.ViewModelFactory]
  * Параметры:
- * @param currencyStore сохранение и получение данных о пользователе с SharedPreferences[com.example.cleararchcurrency.data.store.StoreImpl]
+ * @param userDao сохранение и получение данных о пользователе с БД [UserDao]
  */
 class UserRepositoryImpl(private val userDao: UserDao): UserRepository {
 
+    /**
+     * Метод для получения класса с даннх профиля из БД
+     */
     override fun getUser(): Single<User> {
         return userDao.getUser()
     }
 
-    override fun updateUser(user: User): Completable {
-        return userDao.updateUser(user)
+    /**
+     * Метод для обновления данных пользователя в БД
+     * @param user - класс с данными пользователя
+     */
+    override fun updateAndGetUser(user: User): Single<User> {
+        return userDao.updateAndGetUser(user)
     }
 
 }

@@ -15,15 +15,16 @@ import com.example.finalproject.presentation.dialog.ErrorDialog
 import com.example.finalproject.presentation.recyclerview.currency.CurrencyAdapter
 import com.example.finalproject.presentation.recyclerview.maincards.MainCardAdapter
 import com.example.finalproject.presentation.viewmodel.MainViewModel
-import com.example.finalproject.utils.constants.UrlConstants.NETWORK_ERROR_TAG
+import com.example.finalproject.utils.constants.FragmentConstants.NETWORK_ERROR_TAG
 import com.example.finalproject.utils.extensions.RecyclerViewExtensions.addHorizontalLinearLayout
 import com.example.finalproject.utils.extensions.RecyclerViewExtensions.addVerticalDivider
 import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
- * Домашний фрагмента с отображением банковской карты с балансом
- * и 3-х первых курсов валют по отношению к доллару США
+ * Домашний фрагмента с отображением
+ * 3-х первых банковских карт,
+ * 3-х первых курсов валют по отношению к доллару США
  */
 @AndroidEntryPoint
 class MainScreen : Fragment() {
@@ -32,10 +33,7 @@ class MainScreen : Fragment() {
     private val binding
         get() = _binding!!
 
-    private val currencyAdapter = CurrencyAdapter()
 
-    //Ленивая имплементация sharedViewModel c AndroidViewModelFactory
-    //private val sharedViewModel by activityViewModels<SharedViewModel> { viewModelFactory }
     private val mainViewModel: MainViewModel by viewModels()
 
 
@@ -51,8 +49,6 @@ class MainScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Log.d("MVVM", "${sharedViewModel.hashCode()}")
-
         initCurrenciesList()
 
         initUserData()
@@ -67,86 +63,120 @@ class MainScreen : Fragment() {
             mainViewModel.getCurrentCurrency()
         }
 
-
     }
 
+    /**
+     * Метод запрашивает данные по пользователю и подписывается на их изменения
+     */
     private fun initUserData() {
+
+        //наблюдение за данными пользователя
         mainViewModel.observeUser().observe(viewLifecycleOwner) { user ->
             binding.userName.text =
                 String.format(getString(R.string.user_name), user.name, user.surname)
             binding.userLogo.setImageURI(Uri.parse(user.avatar))
         }
 
+        //делаем запрос на получение данных пользователя
         mainViewModel.getUser()
-
     }
 
+
+    /**
+     * Метод запрашивает данные по курсам валют и подписывается на их изменения
+     */
     private fun initCurrenciesList() {
 
-        binding.rvCurrencies.apply {
+        val currencyAdapter = CurrencyAdapter()
+
+        binding.rvCurrencies.apply  {
             adapter = currencyAdapter
             addVerticalDivider(requireContext())
         }
 
         mainViewModel.run {
 
+            //наблюдение за курсами валют
             observeCurrency().observe(viewLifecycleOwner) { currency ->
                 currencyAdapter.setCurrency(currency.take(3))
             }
 
+            //наблюдение за прогрессом загрузки курсов валют
             observeCurrencyProgress().observe(viewLifecycleOwner) { inProgress ->
-                binding.run {
-                    if (inProgress) {
-                        showProgress()
-                    } else {
-                        hideProgress()
-                    }
+                if (inProgress) {
+                    binding.showProgress()
+                } else {
+                    binding.hideProgress()
                 }
             }
 
-            observeCurrencyError().observe(viewLifecycleOwner) { throwable ->
+            //наблюдение за ошибками при загрузке данных и отображени диалогового окна
+            observeError().observe(viewLifecycleOwner) { throwable ->
                 throwable?.let {
                     ErrorDialog(throwable.message, R.drawable.network_error).show(
                         parentFragmentManager,
                         NETWORK_ERROR_TAG
                     )
                 }
-                //currencyThrowableToNull()
-
                 binding.showRetry()
             }
 
+            //делаем запрос на получение текущих курсов валют
             getCurrentCurrency()
         }
     }
 
+    /**
+     * Метод запрашивает данные о банковских картах пользователя
+     */
     private fun initCardsList() {
 
         val cardAdapter = MainCardAdapter()
-        binding.rvCards.addHorizontalLinearLayout(requireContext())
-        binding.rvCards.adapter = cardAdapter
-        val snapHelper = LinearSnapHelper() // Or PagerSnapHelper
+
+        binding.rvCards.apply {
+            adapter = cardAdapter
+            addHorizontalLinearLayout(requireContext())
+        }
+
+        val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.rvCards)
 
-        mainViewModel.observeBankCards().observe(viewLifecycleOwner) { bankCards ->
-            cardAdapter.setBankCards(bankCards)
+
+        binding.cardsSeeAll.setOnClickListener {
+            it.findNavController().navigate(R.id.bankCardsScreen)
         }
+
+        //наблюдение за банковскими картами
+        mainViewModel.observeBankCards().observe(viewLifecycleOwner) { bankCards ->
+            if(bankCards.size > 3) {
+                cardAdapter.setBankCards(bankCards.take(3))
+                binding.cardsSeeAll.visibility = View.VISIBLE
+            } else {
+                cardAdapter.setBankCards(bankCards)
+                binding.cardsSeeAll.visibility = View.GONE
+            }
+        }
+
+        //делаем запрос на получение банковских карт
         mainViewModel.getBankCards()
 
     }
 
+    //Показать кнопку повторить запрос
     private fun FragmentMainScreenBinding.showRetry() {
         loadingCurrency.visibility = View.GONE
         rvCurrencies.visibility = View.GONE
         retry.visibility = View.VISIBLE
     }
 
+    //Показать  прогресс загрузки курсов валют
     private fun FragmentMainScreenBinding.showProgress() {
         loadingCurrency.visibility = View.VISIBLE
         rvCurrencies.visibility = View.GONE
         retry.visibility = View.GONE
     }
 
+    //Скрыть  прогресс загрузки курсов валют
     private fun FragmentMainScreenBinding.hideProgress() {
         loadingCurrency.visibility = View.GONE
         retry.visibility = View.GONE

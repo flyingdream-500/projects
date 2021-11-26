@@ -20,6 +20,20 @@ object Dependencies {
         const val jUnit = "junit:junit:4.+"
         const val androidJUnit = "androidx.test.ext:junit:1.1.3"
         const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
+
+        const val powerMockModule = "org.powermock:powermock-module-junit4:2.0.2"
+        const val powerMockApi = "org.powermock:powermock-api-mockito2:2.0.2"
+        const val mockk = "io.mockk:mockk:1.10.6"
+        const val mockkAndroid = "io.mockk:mockk-android:1.10.6"
+        const val mockitoInlineAndroid = "org.mockito:mockito-inline:3.4.4"
+        const val mockitoCore = "org.mockito:mockito-core:3.10.0"
+        const val archCore = "android.arch.core:core-testing:1.1.1"
+
+        const val mockitoAndroid = "org.mockito:mockito-android:2.7.15"
+        const val googleTruth = "com.google.truth:truth:1.1.3"
+        const val fragmentTesting = "androidx.fragment:fragment-testing:1.4.0"
+        const val testRunner = "androidx.test:runner:1.4.0"
+        const val testCore = "androidx.test:core:1.4.0"
     }
 
     object Navigation {
@@ -82,6 +96,11 @@ object Dependencies {
         private const val glideVersion = "4.12.0"
         const val glide = "com.github.bumptech.glide:glide:$glideVersion"
         const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
+    }
+
+    object ViewPager2 {
+        private const val viewPagerVersion = "1.0.0"
+        const val viewPager2 = "androidx.viewpager2:viewpager2:$viewPagerVersion"
     }
 
 

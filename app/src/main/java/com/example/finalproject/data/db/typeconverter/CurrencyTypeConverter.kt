@@ -6,6 +6,9 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 
+/**
+ * Конвертер для записи списка валют [Currency] в БД
+ */
 object CurrencyTypeConverter {
 
     private lateinit var moshi: Moshi
@@ -17,15 +20,22 @@ object CurrencyTypeConverter {
     private val type = Types.newParameterizedType(List::class.java, Currency::class.java)
     private lateinit var adapter: JsonAdapter<List<Currency>>
 
+
+    /**
+     * Получаем список  [Currency] из JSON
+     */
     @TypeConverter
     fun fromString(value: String): List<Currency> {
-        adapter = moshi.adapter<List<Currency>>(type)
+        adapter = moshi.adapter(type)
         return adapter.fromJson(value).orEmpty()
     }
 
+    /**
+     * Конвертируем список [Currency] в JSON
+     */
     @TypeConverter
     fun fromCurrentCurrencyItem(item: List<Currency>): String {
-        adapter = moshi.adapter<List<Currency>>(type)
+        adapter = moshi.adapter(type)
         return adapter.toJson(item)
     }
 

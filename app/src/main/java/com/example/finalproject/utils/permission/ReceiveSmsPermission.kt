@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import com.example.finalproject.R
-import com.example.finalproject.utils.constants.SmsReceiverConstants
 
 object ReceiveSmsPermission {
 

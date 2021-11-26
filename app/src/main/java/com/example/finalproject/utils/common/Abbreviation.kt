@@ -1,5 +1,8 @@
 package com.example.finalproject.utils.common
 
+/**
+ * Аббривиатуры курсов валют
+ */
 enum class Abbreviation {
     USD,
     GBP,

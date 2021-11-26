@@ -1,17 +1,23 @@
 package com.example.finalproject.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.finalproject.domain.usecase.TransactionsInteractorImpl
 import com.example.finalproject.domain.usecase.interfaces.TransactionInteractor
 import com.example.finalproject.model.transaction.CurrencyTransaction
+import com.example.finalproject.presentation.navigation.TransactionsScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
+/**
+ * View Model для экрана [TransactionsScreen]
+ *
+ * @param transactionsInteractor интерактор для взаимодействия с выполненными валютными операциями, реализация [TransactionsInteractorImpl]
+ */
 @HiltViewModel
 class TransactionsViewModel @Inject constructor(
     private val transactionsInteractor: TransactionInteractor
@@ -31,41 +37,34 @@ class TransactionsViewModel @Inject constructor(
     private val compositeDisposable = CompositeDisposable()
 
 
-
-
-    //TRANSACTIONS
-    // Получение данных из БД
+    /**
+     * Получение данных о транзакциях из БД
+     */
     fun getTransactions() {
-        try {
-            val disposable =
-                transactionsInteractor.getTransactions()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe { transactionsProgressLiveData.value = true }
-                    .subscribe(
-                        { transactions ->
-                            Log.d("INFO", "success")
-                            transactionsProgressLiveData.value = false
-                            transactionsLiveData.value = transactions
-                        }, { throwable ->
-                            Log.d("INFO", "thowable")
-                            transactionsProgressLiveData.value = false
-                            transactionsErrorLiveData.value = throwable
-                            transactionsErrorLiveData.value = null
-                        }, {
-                            Log.d("INFO", "complete")
-                            transactionsProgressLiveData.value = false
-                            transactionsLiveData.value = emptyList()
-                        }
-                    )
-            compositeDisposable.add(disposable)
-        } catch (throwable: Throwable) {
-            transactionsErrorLiveData.value = throwable
-        }
+
+        val disposable =
+            transactionsInteractor.getTransactions()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { transactionsProgressLiveData.value = true }
+                .subscribe(
+                    { transactions ->
+                        transactionsProgressLiveData.value = false
+                        transactionsLiveData.value = transactions
+                    }, { throwable ->
+                        transactionsProgressLiveData.value = false
+                        transactionsErrorLiveData.value = throwable
+                    }, {
+                        transactionsProgressLiveData.value = false
+                        transactionsLiveData.value = emptyList()
+                    }
+                )
+        compositeDisposable.add(disposable)
+
     }
 
 
-    //Сохранение баланса в shared preferences и очистка compositeDisposable
+    // Очистка compositeDisposable
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()

@@ -41,6 +41,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    /*tasks.withType<Test> {
+        useJUnitPlatform()
+    }*/
 }
 
 dependencies {
@@ -87,6 +90,9 @@ dependencies {
     implementation(Dependencies.Glide.glide)
     kapt(Dependencies.Glide.glideCompiler)
 
+    //ViewPager2
+    implementation(Dependencies.ViewPager2.viewPager2)
+
 
     //Room
     implementation(Dependencies.Room.room)
@@ -96,8 +102,21 @@ dependencies {
 
     //Test
     testImplementation (Dependencies.Test.jUnit)
+    testImplementation (Dependencies.Test.powerMockModule)
+    testImplementation (Dependencies.Test.powerMockApi)
+    testImplementation (Dependencies.Test.mockk)
+    testImplementation (Dependencies.Test.mockkAndroid)
+    testImplementation (Dependencies.Test.mockitoInlineAndroid)
+    testImplementation (Dependencies.Test.mockitoCore)
+    testImplementation (Dependencies.Test.archCore)
+
     androidTestImplementation (Dependencies.Test.androidJUnit)
     androidTestImplementation (Dependencies.Test.espresso)
+    androidTestImplementation (Dependencies.Test.mockitoAndroid)
+    androidTestImplementation (Dependencies.Test.googleTruth)
+    androidTestImplementation (Dependencies.Test.fragmentTesting)
+    androidTestImplementation (Dependencies.Test.testRunner)
+    androidTestImplementation (Dependencies.Test.testCore)
 
 
 }

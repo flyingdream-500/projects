@@ -17,10 +17,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-/**
- * Модуль domain слоя
- */
 
+/**
+ * Модуль конвертера
+ */
 @Module()
 @InstallIn(SingletonComponent::class)
 class ConverterModule {
@@ -32,6 +32,9 @@ class ConverterModule {
 
 }
 
+/**
+ * Модуль репозиторий
+ */
 @Module()
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {
@@ -60,7 +63,9 @@ class RepositoryModule {
 
 }
 
-
+/**
+ * Модуль интеракторов
+ */
 @Module()
 @InstallIn(SingletonComponent::class)
 class InteractorModule {

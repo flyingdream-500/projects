@@ -9,25 +9,32 @@ import com.example.finalproject.model.transaction.CurrencyTransaction
 
 
 /**
- * View Holder для размещения данных по элементу Recycler View
+ * View Holder для отображения выполненных валютных операции
+ * @see binding - биндинг класс макета [ItemOperationBinding]
  */
 class TransactionsViewHolder(private val binding: ItemOperationBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: CurrencyTransaction) {
+        //показывем базовый логотип
         Glide.with(itemView)
             .load(item.baseLogo)
             .into(binding.baseLogo)
+        //показывем целевой логотип
         Glide.with(itemView)
             .load(item.targetLogo)
             .into(binding.targetLogo)
 
-        binding.baseValue.text = item.baseSum
-        binding.targetValue.text = item.targetSum
-        binding.date.text = item.date
+        binding.run {
+            baseValue.text = item.baseSum
+            targetValue.text = item.targetSum
+            date.text = item.date
+        }
     }
 
-
+    /**
+     * Функция создания экземпляра [TransactionsViewHolder]
+     */
     companion object {
         fun create(parent: ViewGroup): TransactionsViewHolder {
             val binding = ItemOperationBinding.inflate(

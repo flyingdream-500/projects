@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.core.Maybe
 
 
 /**
- * Интерфейс с методами взаимодействия с БД
+ * Dao с методами взаимодействия с БД выполненных валютных операций
  */
 @Dao
 interface TransactionsDao {
@@ -20,5 +20,6 @@ interface TransactionsDao {
 
     @Insert
     fun addTransaction(currencyTransaction: CurrencyTransaction): Completable
+
 
 }

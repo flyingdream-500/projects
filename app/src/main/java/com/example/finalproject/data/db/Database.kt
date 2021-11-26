@@ -18,8 +18,7 @@ import com.example.finalproject.utils.constants.DataBaseConstants.DATABASE_VERSI
  */
 @Database(
     entities = [CurrencyTransaction::class, BankCard::class, CurrentCurrencyItem::class, User::class],
-    version = DATABASE_VERSION,
-    exportSchema = false
+    version = DATABASE_VERSION
 )
 abstract class Database : RoomDatabase() {
     abstract fun transactionsDao(): TransactionsDao

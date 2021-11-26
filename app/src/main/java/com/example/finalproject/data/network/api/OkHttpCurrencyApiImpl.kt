@@ -14,8 +14,8 @@ import okio.IOException
  * Конкретная реализация получениия данных о курсе валют
  * с помощью библиотеки OkHttp с наследованием интерфейса [CurrencyApi]
  * Параметры:
- * @param okHttpClient экземпляр класса OkHttp [com.example.cleararchcurrency.presentation.viewmodel.ViewModelFactory]
- * @param converter  экземпляр класса конвертера [CurrentCurrencyConverterImpl] для перевода JSON файла в класс: [CurrentCurrencyConverterImpl]
+ * @param okHttpClient экземпляр класса OkHttp
+ * @param converter  экземпляр класса конвертера [CurrentCurrencyConverterImpl] для перевода JSON файла в класс: [CurrentCurrency]
  */
 class OkHttpCurrencyApiImpl(
     private val okHttpClient: OkHttpClient,

@@ -5,7 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.model.currency.Currency
 
 /**
- * Адаптер для отображения элементов списка.
+ * Адаптер для отображения курсов валют
+ * @see currentCurrencyItemList - список курсов валют [Currency]
  */
 class CurrencyAdapter : RecyclerView.Adapter<CurrencyViewHolder>() {
     private var currentCurrencyItemList: List<Currency> = emptyList()
@@ -20,7 +21,7 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
-        holder.bind(currentCurrencyItemList.get(position))
+        holder.bind(currentCurrencyItemList[position])
     }
 
     override fun getItemCount(): Int {

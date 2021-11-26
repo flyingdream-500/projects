@@ -7,7 +7,6 @@ import com.example.finalproject.R
  */
 object PrefsConstants {
     const val PREFS_NAME = "CURRENCY_PREFS"
-
     const val USER_AUTH_KEY = "AUTH"
     const val USER_AUTH_DEFAULT = false
 }

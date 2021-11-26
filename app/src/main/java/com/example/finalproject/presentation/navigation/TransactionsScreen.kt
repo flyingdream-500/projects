@@ -1,7 +1,6 @@
 package com.example.finalproject.presentation.navigation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.example.finalproject.databinding.FragmentTransactionsScreenBinding
 import com.example.finalproject.presentation.dialog.ErrorDialog
 import com.example.finalproject.presentation.recyclerview.transactions.TransactionsAdapter
 import com.example.finalproject.presentation.viewmodel.TransactionsViewModel
-import com.example.finalproject.utils.constants.UrlConstants.DATABASE_ERROR_TAG
+import com.example.finalproject.utils.constants.FragmentConstants.DATABASE_ERROR_TAG
 import com.example.finalproject.utils.extensions.RecyclerViewExtensions.addVerticalDivider
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,9 +25,7 @@ class TransactionsScreen : Fragment() {
     private val binding
         get() = _binding!!
 
-
     private val transactionsViewModel: TransactionsViewModel by viewModels()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,24 +38,34 @@ class TransactionsScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = TransactionsAdapter()
+        initTransactions()
+
+    }
+
+    /**
+     * Метод запрашивает данные по выполненных валютных операциях и подписывается на их изменения
+     */
+    private fun initTransactions() {
+
+        val transactionsAdapter = TransactionsAdapter()
         binding.rvOperations.apply {
-            this.adapter = adapter
+            adapter = transactionsAdapter
             addVerticalDivider(requireContext())
         }
 
         transactionsViewModel.run {
 
+            //наблюдение за списком транзакции
             observeTransactions().observe(viewLifecycleOwner) { transactions ->
-                Log.d("INFO", transactions.size.toString())
                 if(transactions.isEmpty()) {
                     hideTransactions()
                 } else {
                     showTransactions()
-                    adapter.setCurrencyList(transactions)
+                    transactionsAdapter.setCurrencyList(transactions)
                 }
             }
 
+            //наблюдение за прогрессом получения данных
             observeTransactionsProgress().observe(viewLifecycleOwner) { inProgress ->
                 if (inProgress) {
                     showProgress()
@@ -67,6 +74,7 @@ class TransactionsScreen : Fragment() {
                 }
             }
 
+            //наблюдение за ошибками
             observeTransactionsError().observe(viewLifecycleOwner) { throwable ->
                 throwable?.let {
                     ErrorDialog(it.message, R.drawable.data_base_error).show(
@@ -76,10 +84,15 @@ class TransactionsScreen : Fragment() {
                 }
             }
 
+            //делаем запрос на получение данных по выполненным валютным операциям
             getTransactions()
         }
     }
 
+
+    /**
+     * Показываем прогресс, скрываем другой UI
+     */
     private fun showProgress() {
         binding.loadingTransactions.visibility = View.VISIBLE
         binding.rvOperations.visibility = View.GONE
@@ -87,6 +100,9 @@ class TransactionsScreen : Fragment() {
         binding.noTransactionsText.visibility = View.GONE
     }
 
+    /**
+     * Скрываем прогресс, показываем другой UI
+     */
     private fun hideProgress() {
         binding.rvOperations.visibility = View.VISIBLE
         binding.loadingTransactions.visibility = View.GONE
@@ -94,12 +110,18 @@ class TransactionsScreen : Fragment() {
         binding.noTransactionsText.visibility = View.GONE
     }
 
+    /**
+     * Показываем список, скрываем другой UI
+     */
     private fun showTransactions() {
         binding.rvOperations.visibility = View.VISIBLE
         binding.noTransactionsImage.visibility = View.GONE
         binding.noTransactionsText.visibility = View.GONE
     }
 
+    /**
+     * Скрываем список, показываем другой UI
+     */
     private fun hideTransactions() {
         binding.rvOperations.visibility = View.GONE
         binding.noTransactionsImage.visibility = View.VISIBLE

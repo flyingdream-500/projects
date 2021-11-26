@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/mainScreen"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:id="@+id/bankCardsScreen"
+        android:title="@string/cards"
+        android:icon="@drawable/ic_credit_card"/>
+
+    <item android:id="@+id/transactionsScreen"
+        android:title="@string/transactions"
+        android:icon="@drawable/ic_transactions"/>
+
+    <item android:id="@+id/settingsScreen"
+        android:title="@string/setting"
+        android:icon="@drawable/ic_settings"/>
+
+</menu>

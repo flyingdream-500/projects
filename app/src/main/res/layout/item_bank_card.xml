@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include
+        android:id="@+id/card"
+        layout="@layout/main_card_item"
+        android:layout_height="@dimen/card_height"
+        android:layout_width="@dimen/card_width"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="24dp"
+        >
+    </include>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/card_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/TextView.CardDescription"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="@dimen/start_padding"
+        android:layout_marginEnd="@dimen/end_padding"
+        tools:text="@string/us_description"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

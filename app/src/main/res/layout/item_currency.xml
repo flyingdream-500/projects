@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingStart="@dimen/currency_padding"
+    android:paddingEnd="@dimen/currency_padding">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/item_logo"
+        android:layout_width="@dimen/user_logo_size"
+        android:layout_height="@dimen/user_logo_size"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_us" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_abbreviation"
+        style="@style/TextView.CurrencyAbbreviation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toTopOf="@id/item_description"
+        app:layout_constraintEnd_toStartOf="@id/item_price"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/item_logo"
+        app:layout_constraintTop_toTopOf="@id/item_logo"
+        app:layout_constraintWidth_default="wrap"
+        tools:text="USD" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_description"
+        style="@style/TextView.CurrencyDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/item_logo"
+        app:layout_constraintEnd_toStartOf="@id/item_price"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/item_abbreviation"
+        app:layout_constraintTop_toBottomOf="@id/item_abbreviation"
+        app:layout_constraintWidth_default="wrap"
+        tools:text="Доллар США" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_price"
+        style="@style/TextView.CurrencyAbbreviation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/item_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_logo"
+        tools:text="72.123" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

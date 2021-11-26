@@ -5,14 +5,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
+        classpath(Plugins.androidGradlePlugin)
+        classpath(Plugins.kotlinGradlePlugin)
+        classpath(Plugins.hiltGradlePlugin)
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
-//task clean(type: Delete) {
-//    delete rootProject.buildDir
-//}
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
+}

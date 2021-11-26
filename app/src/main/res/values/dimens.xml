@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_text_size">12sp</dimen>
+
+
+    <!--Currency item-->
+    <dimen name="currency_abbr_size">22sp</dimen>
+    <dimen name="currency_description_size">12sp</dimen>
+
+
+    <!--Transactions screen screen-->
+    <dimen name="transaction_title_size">20sp</dimen>
+    <dimen name="transaction_value_size">16sp</dimen>
+    <dimen name="transaction_date_size">12sp</dimen>
+    <dimen name="transaction_logo">24dp</dimen>
+
+
+    <!--Error-->
+    <dimen name="error_logo_size">72dp</dimen>
+
+
+    <!--Padding-->
+    <dimen name="currency_padding">16dp</dimen>
+    <dimen name="start_padding">16dp</dimen>
+    <dimen name="end_padding">16dp</dimen>
+
+    <!--Input-->
+    <dimen name="input_text_size">20sp</dimen>
+    <dimen name="input_field_icon_size">24dp</dimen>
+
+
+    <!--Main screen-->
+    <dimen name="navigation_view_radius">22dp</dimen>
+    <dimen name="main_background_radius">20dp</dimen>
+    <dimen name="fragment_title_size">24sp</dimen>
+    <dimen name="title_balance_size">16sp</dimen>
+    <dimen name="balance_size">18sp</dimen>
+    <dimen name="greeting_size">14sp</dimen>
+    <dimen name="see_all_size">16sp</dimen>
+    <dimen name="user_logo_size">48dp</dimen>
+
+    <!--Main bank card-->
+    <dimen name="card_height">160dp</dimen>
+    <dimen name="card_width">250dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_flag_logo">24dp</dimen>
+    <dimen name="card_name_size">14sp</dimen>
+    <dimen name="card_balance_title_size">12sp</dimen>
+    <dimen name="card_balance_size">22sp</dimen>
+
+    <!--Transaction bank card-->
+    <dimen name="card_transaction_height">115dp</dimen>
+    <dimen name="card_transaction_width">180dp</dimen>
+    <dimen name="card_transaction_flag_logo">16dp</dimen>
+    <dimen name="card_transaction_balance_title_size">12dp</dimen>
+    <dimen name="card_transaction_balance_size">14dp</dimen>
+    <dimen name="card_transaction_name_size">12dp</dimen>
+
+    <!--Authentication fragment-->
+    <dimen name="auth_title_size">20sp</dimen>
+    <dimen name="auth_phone_size">16sp</dimen>
+    <dimen name="auth_code_size">60sp</dimen>
+    <dimen name="auth_loading_size">150dp</dimen>
+
+    <!--Settings-->
+    <dimen name="user_name_size">22sp</dimen>
+    <dimen name="category_size">20sp</dimen>
+    <dimen name="settings_item_size">17sp</dimen>
+    <dimen name="settings_description_size">15sp</dimen>
+
+    <!--My Cards-->
+    <dimen name="description_size">16sp</dimen>
+
+</resources>

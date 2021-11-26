@@ -2,15 +2,9 @@ package com.example.finalproject.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.finalproject.domain.usecase.BankCardsInteractorImpl
-import com.example.finalproject.domain.usecase.CurrencyInteractorImpl
-import com.example.finalproject.domain.usecase.UserInteractorImpl
-import com.example.finalproject.model.bankcard.BankCard
+import com.example.finalproject.domain.usecase.interfaces.CurrencyInteractor
 import com.example.finalproject.model.currency.Currency
-import com.example.finalproject.model.user.User
 import com.example.finalproject.args.CURRENT_CURRENCY_ITEM
-import com.example.finalproject.args.DEFAULT_BANK_CARD
-import com.example.finalproject.args.DEFAULT_USER
 import com.example.finalproject.presentation.tools.RxImmediateSchedulerRule
 import io.mockk.*
 import io.reactivex.rxjava3.core.Completable
@@ -21,22 +15,17 @@ import org.junit.Rule
 import org.junit.Test
 
 /**
- * Тестирование view model [MainViewModel] отображения главного экрана
+ * Тестирование view model [ListScreenViewModel] отображения курсов валют
  */
-class MainViewModelTest {
+class ListScreenViewModelTest {
 
-    private lateinit var viewModelTest: MainViewModel
+    private lateinit var viewModelTest: ListScreenViewModel
 
-    private val currencyInteractor: CurrencyInteractorImpl = mockk()
-    private val bankCardInteractor: BankCardsInteractorImpl = mockk()
-    private val userInteractor: UserInteractorImpl = mockk()
+    private val currencyInteractor: CurrencyInteractor = mockk()
 
     private val currencyObserver: Observer<List<Currency>> = mockk()
     private val progressObserver: Observer<Boolean> = mockk()
     private val errorObserver: Observer<Throwable?> = mockk()
-    private val bankCardsObserver: Observer<List<BankCard>> = mockk()
-    private val userObserver: Observer<User> = mockk()
-
 
     // Правило для синхронной работы RxJava
     @Rule
@@ -50,33 +39,28 @@ class MainViewModelTest {
     @JvmField
     val rule = InstantTaskExecutorRule()
 
+
     /**
      * Данный метод будет вызван перед каждым тестовым методом.
      */
     @Before
     fun setUp() {
-        viewModelTest = MainViewModel(
-            currencyInteractor,
-            bankCardInteractor,
-            userInteractor
+        viewModelTest = ListScreenViewModel(
+            currencyInteractor
         )
 
         viewModelTest.observeCurrency().observeForever(currencyObserver)
         viewModelTest.observeCurrencyProgress().observeForever(progressObserver)
-        viewModelTest.observeError().observeForever(errorObserver)
-        viewModelTest.observeBankCards().observeForever(bankCardsObserver)
-        viewModelTest.observeUser().observeForever(userObserver)
+        viewModelTest.observeCurrencyError().observeForever(errorObserver)
+
 
         every { currencyObserver.onChanged(any()) } just Runs
         every { progressObserver.onChanged(any()) } just Runs
         every { errorObserver.onChanged(any()) } just Runs
-        every { bankCardsObserver.onChanged(any()) } just Runs
-        every { userObserver.onChanged(any()) } just Runs
-
     }
 
     /**
-     * Тестирование [MainViewModel.getCurrentCurrency]
+     * Тестирование [ListScreenViewModel.getCurrentCurrency]
      */
     @Test
     fun getCurrentCurrencyTest() {
@@ -86,40 +70,6 @@ class MainViewModelTest {
         viewModelTest.getCurrentCurrency()
         verifySequence {
             currencyObserver.onChanged(CURRENT_CURRENCY_ITEM.currencyList)
-        }
-        verify { errorObserver wasNot Called }
-    }
-
-
-    /**
-     * Тестирование [MainViewModel.getUser]
-     */
-    @Test
-    fun getUserTest() {
-        every { userInteractor.getUser() } returns Single.fromCallable {
-            DEFAULT_USER
-        }
-        viewModelTest.getUser()
-        verifySequence {
-            userObserver.onChanged(DEFAULT_USER)
-        }
-        verify { errorObserver wasNot Called }
-    }
-
-
-    /**
-     * Тестирование [MainViewModel.getBankCards]
-     */
-    @Test
-    fun getBankCardsTest() {
-        every { bankCardInteractor.getBankCards() } returns Single.fromCallable {
-            arrayListOf(
-                DEFAULT_BANK_CARD
-            )
-        }
-        viewModelTest.getBankCards()
-        verifySequence {
-            bankCardsObserver.onChanged(arrayListOf(DEFAULT_BANK_CARD))
         }
         verify { errorObserver wasNot Called }
     }

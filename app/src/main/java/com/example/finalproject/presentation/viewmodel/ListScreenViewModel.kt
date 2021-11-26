@@ -46,28 +46,32 @@ class ListScreenViewModel @Inject constructor(
      * Если данные не сегодняшние, тянем данные с API
      */
     fun getCurrentCurrency() {
-        val disposable = currencyInteractor.getCurrentCurrencyItem()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { currentCurrencyItem ->
-                    val currencyIsToday = currentCurrencyItem.date.isToday(CURRENCY_DATE_FORMAT)
-                    if (currencyIsToday) {
-                        currencyLiveData.value = currentCurrencyItem.currencyList
-                    } else {
+
+        try {
+            val disposable = currencyInteractor.getCurrentCurrencyItem()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { currentCurrencyItem ->
+                        val currencyIsToday = currentCurrencyItem.date.isToday(CURRENCY_DATE_FORMAT)
+                        if (currencyIsToday) {
+                            currencyLiveData.value = currentCurrencyItem.currencyList
+                        } else {
+                            getRemoteCurrentCurrency()
+                        }
+                    },
+                    { throwable ->
+                        currencyErrorLiveData.value = throwable
+                    },
+                    {
                         getRemoteCurrentCurrency()
                     }
-                },
-                { throwable ->
-                    currencyErrorLiveData.value = throwable
-                },
-                {
-                    getRemoteCurrentCurrency()
-                }
-            )
+                )
 
-        compositeDisposable.add(disposable)
-
+            compositeDisposable.add(disposable)
+        } catch (t: Throwable) {
+            currencyErrorLiveData.value = t
+        }
     }
 
 

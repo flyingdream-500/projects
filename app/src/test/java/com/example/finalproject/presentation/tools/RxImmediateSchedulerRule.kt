@@ -1,4 +1,4 @@
-package com.example.finalproject.presentation.viewmodel
+package com.example.finalproject.presentation.tools
 
 import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
@@ -8,7 +8,7 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 /**
- * Правило для тестирования Rx в [ViewModelTest]
+ * Правило для тестирования Rx в ViewModel
  */
 class RxImmediateSchedulerRule : TestRule {
     override fun apply(base: Statement?, description: Description?): Statement {

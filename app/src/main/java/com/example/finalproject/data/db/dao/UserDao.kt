@@ -19,6 +19,8 @@ interface UserDao {
         }
     }
 
+    @Insert
+    fun insertUser(user: User)
 
     @Transaction
     fun updateAndGetUserSync(user: User): User {

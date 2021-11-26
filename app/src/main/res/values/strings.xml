@@ -69,7 +69,7 @@
     <string name="se_character">%,.2f SEK</string>        <!--Символ шведской кроны-->
     <string name="sg_character">%,.2f \u0024</string>     <!--Символ сингапурского доллара-->
 
-
+    <!--currency full name-->
     <string name="gb_fullname">Фунт стерлингов</string>
     <string name="er_fullname">Евро</string>
     <string name="ch_fullname">Швейцарский франк</string>
@@ -82,7 +82,7 @@
     <string name="ru_fullname">Российский рубль</string>
     <string name="jp_fullname">Иена</string>
 
-
+    <!--currency description-->
     <string name="us_description">Доллар – национальная валюта США, мировая резервная валюта, равняется 100 центам.
         Международный банковский код – USD, обозначается символом $.
         Эмиссию осуществляет выполняющая в США функцию центрального банка Федеральная резервная система.
@@ -125,7 +125,7 @@
     </string>
 
 
-
+    <!--my cards-->
     <string name="my_cards">My cards</string>
 
     <!--transactions-->

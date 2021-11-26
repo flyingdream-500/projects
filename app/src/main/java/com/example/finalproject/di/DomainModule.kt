@@ -25,7 +25,6 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 class ConverterModule {
 
-
     @Provides
     fun provideConverter() =
         CurrentCurrencyItemConverterImpl()
@@ -70,9 +69,6 @@ class RepositoryModule {
 @InstallIn(SingletonComponent::class)
 class InteractorModule {
 
-
-    //@Reusable
-    //@Singleton
     @Provides
     fun provideCurrencyInteractor(
         currencyRepository: CurrencyRepository,

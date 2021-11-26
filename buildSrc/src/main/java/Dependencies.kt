@@ -1,4 +1,4 @@
-import org.gradle.api.artifacts.dsl.DependencyHandler
+
 
 object Dependencies {
 
@@ -16,7 +16,7 @@ object Dependencies {
         const val legacySupport = "androidx.legacy:legacy-support-v4:$legacySupportVersion"
     }
 
-    object Test {
+    object  Test {
         const val jUnit = "junit:junit:4.+"
         const val androidJUnit = "androidx.test.ext:junit:1.1.3"
         const val espresso = "androidx.test.espresso:espresso-core:3.4.0"

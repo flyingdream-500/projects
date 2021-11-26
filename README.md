@@ -2,10 +2,43 @@
 Приложение для имитации банковских операций по получению курса валют и их покупки. Курс валют обновляется 1 раз в стуки, данные получаем из [API](https://github.com/fawazahmed0/currency-api) 
 
 ## Превью
-<p align="center">
-<img src="data/second.gif" />
-<img src="data/third.gif" />
-<img src="data/db.gif" />
+<p align="left">
+<img src="data/main_first.gif" />
+<img src="data/main_second.gif" />
+</p>
+
+## Main Screen Screen
+<p align="left">
+<img src="data/main.jpg" />
+</p>
+
+## My Cards Screen
+<p align="left">
+<img src="data/my_cards_us.jpg" />
+<img src="data/my_cards_pond.jpg" />
+</p>
+
+## Transactions Screen
+<p align="left">
+<img src="data/transactions_empty.jpg" />
+<img src="data/transactions_full.jpg" />
+</p>
+
+## Settings Screen
+<p align="left">
+<img src="data/settings.jpg" />
+<img src="data/settings_default.jpg" />
+</p>
+
+## Authentication
+<p align="left">
+<img src="data/authenrication_progress.png" />
+<img src="data/authentication_done.png" />
+</p>
+
+## Dark Mode
+<p align="left">
+<img src="data/dark_mode.gif" />
 </p>
 
 ## Стэк

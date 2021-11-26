@@ -11,7 +11,7 @@
 <p align="left">
  <img src="data/main_retry.png" />
  <img src="data/main_progress.png" />
-<img src="data/main.jpg" />
+<img src="data/main_currencies.png" />
 </p>
 
 ## My Cards Screen

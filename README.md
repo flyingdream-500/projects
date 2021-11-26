@@ -9,6 +9,8 @@
 
 ## Main Screen
 <p align="left">
+ <img src="data/main_retry.png" />
+ <img src="data/main_progress.png" />
 <img src="data/main.jpg" />
 </p>
 

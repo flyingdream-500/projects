@@ -7,7 +7,7 @@
 <img src="data/main_second.gif" />
 </p>
 
-## Main Screen Screen
+## Main Screen
 <p align="left">
 <img src="data/main.jpg" />
 </p>
@@ -58,6 +58,4 @@
 - Room
 - Dark Mode
 - Gradle Kotlin DSL
-
-## Описание
 

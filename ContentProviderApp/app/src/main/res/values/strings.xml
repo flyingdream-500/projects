@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ContentProviderApp</string>
+    <string name="extended_fab_content_desc">Add Word</string>
+    <string name="add_word">word</string>
+    <string name="words_fragment_title">Dictionary</string>
+    <string name="add_word_fragment_title">Add word</string>
+    <string name="hint_keyword">Keyword</string>
+    <string name="hint_translate">Translate</string>
+    <string name="add_to_dictionary">Add to Dictionary</string>
+    <string name="pick_image">Pick Image</string>
+    <string name="permissions_denied">Permission Denied</string>
+    <string name="permissions_granted">Permission Granted</string>
+    <string name="empty">Empty</string>
+
+    <string name="load_image_error">Load image error: %1$s</string>
+    <string name="fill_fields_warning">Fill in the fields</string>
+</resources>

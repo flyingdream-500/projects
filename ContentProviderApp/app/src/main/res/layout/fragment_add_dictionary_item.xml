@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="56dp" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_word_fragment_title"
+        style="@style/FragmentTitleStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/keyword_layout"
+        style="@style/InputLayoutStyleFields"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/hint_keyword"
+        android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
+        app:layout_constraintEnd_toStartOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/guideline_toolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/keyword_input"
+            style="@style/InputEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="абвгдеёжзийклмнопрстуфхцчшщъыьэюя АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/translate_layout"
+        style="@style/InputLayoutStyleFields"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/hint_translate"
+        android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
+        app:layout_constraintEnd_toStartOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/keyword_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/translate_input"
+            style="@style/InputEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pick_image"
+        style="@style/PickImageButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_image"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="@id/logo"
+        app:layout_constraintBottom_toBottomOf="@id/logo"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/logo"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/translate_layout"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        android:scaleType="centerCrop"
+        app:shapeAppearance="@style/roundedImageViewRounded"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_to_dictionary"
+        style="@style/AddToDictionaryButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="15dp"
+        android:layout_margin="20dp"
+        android:text="@string/add_to_dictionary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

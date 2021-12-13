@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/bank_card_transaction_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/bottom_sheet_authentication.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/dialog_change_name_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/dialog_error.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_card_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_currency_list_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_transactions_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ildar/AndroidStudioProjects/FinalProject/app/src/main/res/layout/settings_name_item.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

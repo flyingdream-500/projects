@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">VoiceRecorderApp</string>
+
+    <string name="listening_notification_name">Listening</string>
+    <string name="listening_notification_description">Listening of voice records</string>
+
+    <string name="recording_notification_name">Recording</string>
+    <string name="recording_notification_description">Recording of voice </string>
+
+
+    <string name="recording_tab">Recording</string>
+    <string name="listening_tab">All Records</string>
+
+    <string name="permissions_granted">Permission Granted</string>
+    <string name="permissions_denied">Permission Denied</string>
+
+    <string name="default_time">00:00</string>
+
+</resources>

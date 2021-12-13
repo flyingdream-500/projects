@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TextView.TransactionTitle"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="16dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2021-11-23"
+        app:layout_constraintTop_toTopOf="@id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/TextView.TransactionDate"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="16dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/base_logo"
+        android:layout_width="@dimen/transaction_logo"
+        android:layout_height="@dimen/transaction_logo"
+        tools:src="@drawable/ic_us"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintBottom_toBottomOf="@id/label_transaction"
+        app:layout_constraintTop_toTopOf="@id/label_transaction"
+        app:layout_constraintEnd_toStartOf="@id/base_value"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/base_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="220000000 \u0024"
+        style="@style/TextView.TransactionValue"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintStart_toEndOf="@id/base_logo"
+        app:layout_constraintEnd_toStartOf="@id/label_transaction"
+        app:layout_constraintTop_toTopOf="@id/base_logo"
+        app:layout_constraintBottom_toBottomOf="@id/base_logo"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/target_logo"
+        android:layout_width="@dimen/transaction_logo"
+        android:layout_height="@dimen/transaction_logo"
+        tools:src="@drawable/ic_ru"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/target_value"
+        app:layout_constraintBottom_toBottomOf="@id/label_transaction"
+        app:layout_constraintTop_toTopOf="@id/label_transaction"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/target_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="2200000000 \u20bd"
+        style="@style/TextView.TransactionValue"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/target_logo"
+        app:layout_constraintTop_toTopOf="@id/target_logo"
+        app:layout_constraintBottom_toBottomOf="@id/target_logo"
+        app:layout_constraintStart_toEndOf="@id/label_transaction"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/label_transaction"
+        android:layout_width="@dimen/transaction_logo"
+        android:layout_height="@dimen/transaction_logo"
+        android:src="@drawable/ic_exchange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

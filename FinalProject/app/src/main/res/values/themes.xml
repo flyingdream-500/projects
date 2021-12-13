@@ -1,0 +1,270 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FinalProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorPrimaryVariant">@color/material_yellow</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/violet</item>
+        <item name="colorSecondaryVariant">@color/dark_brown</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Change status bar color to yellow -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:colorEdgeEffect">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">@font/louis_george_cafe_bold</item>
+    </style>
+
+
+
+    <!-- Rounding for ShapeableImageView -->
+    <style name="ImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+
+    <style name="Text">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+    </style>
+    <style name="Text.Title">
+        <item name="android:textSize">@dimen/fragment_title_size</item>
+    </style>
+    <style name="Text.Greeting">
+        <item name="android:textSize">@dimen/greeting_size</item>
+        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+    </style>
+    <style name="Text.UserName">
+        <item name="android:textSize">@dimen/user_name_size</item>
+    </style>
+    <style name="Text.SeeAll">
+        <item name="android:textSize">@dimen/see_all_size</item>
+    </style>
+    <style name="Text.TitleBalance">
+        <item name="android:textSize">@dimen/title_balance_size</item>
+    </style>
+    <style name="Text.Balance">
+        <item name="android:textSize">@dimen/title_balance_size</item>
+    </style>
+    <style name="Text.CurrencyAbbreviation">
+        <item name="android:textSize">@dimen/currency_abbr_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+    <style name="Text.CurrencyDescription">
+        <item name="android:textSize">@dimen/currency_description_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+    <style name="Text.SettingsCategory">
+        <item name="android:textSize">@dimen/category_size</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+    <style name="Text.SettingsItem">
+        <item name="android:textSize">@dimen/settings_item_size</item>
+    </style>
+    <style name="Text.SettingsDescription">
+        <item name="android:textSize">@dimen/settings_description_size</item>
+    </style>
+    <style name="Text.TransactionTitle">
+        <item name="android:textSize">@dimen/transaction_title_size</item>
+    </style>
+    <style name="Text.TransactionValue">
+        <item name="android:textSize">@dimen/transaction_value_size</item>
+    </style>
+    <style name="Text.TransactionDate">
+        <item name="android:textSize">@dimen/transaction_date_size</item>
+    </style>
+    <style name="Text.Card">
+        <item name="android:textSize">@dimen/card_name_size</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+    <style name="Text.Card.Balance">
+        <item name="android:textSize">@dimen/card_balance_size</item>
+    </style>
+    <style name="Text.Card.BalanceTitle">
+        <item name="android:textSize">@dimen/card_balance_title_size</item>
+    </style>
+    <style name="Text.CardTransaction">
+        <item name="android:textSize">@dimen/card_transaction_name_size</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+    <style name="Text.CardTransaction.Balance">
+        <item name="android:textSize">@dimen/card_transaction_balance_size</item>
+    </style>
+    <style name="Text.CardTransaction.BalanceTitle">
+        <item name="android:textSize">@dimen/card_transaction_balance_title_size</item>
+    </style>
+    <style name="Text.Authentication">
+        <item name="android:textSize">@dimen/auth_title_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Text.Authentication.Phone">
+        <item name="android:textSize">@dimen/auth_phone_size</item>
+    </style>
+    <style name="Text.Authentication.Code">
+        <item name="android:textSize">@dimen/auth_code_size</item>
+        <item name="android:fontFamily">@font/beon_webfont</item>
+    </style>
+    <style name="Text.ErrorMessage">
+        <item name="android:textSize">@dimen/currency_abbr_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+    <style name="Text.CardDescription">
+        <item name="android:textSize">@dimen/description_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+
+
+    <style name="TextView">
+        <item name="android:textAppearance">@style/Text</item>
+    </style>
+
+    <style name="TextView.Title">
+        <item name="android:textAppearance">@style/Text.Title</item>
+    </style>
+    <style name="TextView.Greeting">
+        <item name="android:textAppearance">@style/Text.Greeting</item>
+    </style>
+    <style name="TextView.UserName">
+        <item name="android:textAppearance">@style/Text.UserName</item>
+    </style>
+    <style name="TextView.SeeAll">
+        <item name="android:textAppearance">@style/Text.SeeAll</item>
+    </style>
+    <style name="TextView.TitleBalance">
+        <item name="android:textAppearance">@style/Text.TitleBalance</item>
+    </style>
+    <style name="TextView.Balance">
+        <item name="android:textAppearance">@style/Text.Balance</item>
+    </style>
+    <style name="TextView.CurrencyAbbreviation">
+        <item name="android:textAppearance">@style/Text.CurrencyAbbreviation</item>
+    </style>
+    <style name="TextView.CurrencyDescription">
+        <item name="android:textAppearance">@style/Text.CurrencyDescription</item>
+    </style>
+    <style name="TextView.SettingsCategory">
+        <item name="android:textAppearance">@style/Text.SettingsCategory</item>
+    </style>
+    <style name="TextView.SettingsItem">
+        <item name="android:textAppearance">@style/Text.SettingsItem</item>
+    </style>
+    <style name="TextView.SettingsDescription">
+        <item name="android:textAppearance">@style/Text.SettingsDescription</item>
+    </style>
+    <style name="TextView.TransactionTitle">
+        <item name="android:textAppearance">@style/Text.TransactionTitle</item>
+    </style>
+    <style name="TextView.TransactionValue">
+        <item name="android:textAppearance">@style/Text.TransactionValue</item>
+    </style>
+    <style name="TextView.TransactionDate">
+        <item name="android:textAppearance">@style/Text.TransactionDate</item>
+    </style>
+    <style name="TextView.Card">
+        <item name="android:textAppearance">@style/Text.Card</item>
+    </style>
+    <style name="TextView.Card.Balance">
+        <item name="android:textAppearance">@style/Text.Card.Balance</item>
+    </style>
+    <style name="TextView.Card.BalanceTitle">
+        <item name="android:textAppearance">@style/Text.Card.BalanceTitle</item>
+    </style>
+    <style name="TextView.CardTransaction">
+        <item name="android:textAppearance">@style/Text.CardTransaction</item>
+    </style>
+    <style name="TextView.CardTransaction.Balance">
+        <item name="android:textAppearance">@style/Text.CardTransaction.Balance</item>
+    </style>
+    <style name="TextView.CardTransaction.BalanceTitle">
+        <item name="android:textAppearance">@style/Text.CardTransaction.BalanceTitle</item>
+    </style>
+    <style name="TextView.Authentication">
+        <item name="android:textAppearance">@style/Text.Authentication</item>
+    </style>
+    <style name="TextView.Authentication.Phone">
+        <item name="android:textAppearance">@style/Text.Authentication.Phone</item>
+    </style>
+    <style name="TextView.Authentication.Code">
+        <item name="android:textAppearance">@style/Text.Authentication.Code</item>
+    </style>
+
+    <style name="TextView.ErrorMessage">
+        <item name="android:textAppearance">@style/TextView.ErrorMessage</item>
+    </style>
+
+    <style name="TextView.CardDescription">
+        <item name="android:textSize">@dimen/description_size</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+
+
+    <style name="Button">
+        <item name="android:textAppearance">@style/Text</item>
+    </style>
+    <style name="Button.Buy">
+        <item name="android:backgroundTint">?attr/colorPrimaryVariant</item>
+    </style>
+    <style name="Button.ChangeName">
+        <item name="android:backgroundTint">?attr/colorPrimaryVariant</item>
+    </style>
+    <style name="Button.Retry">
+        <item name="android:backgroundTint">?attr/colorPrimaryVariant</item>
+    </style>
+
+
+    <style name="InputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">?attr/colorPrimaryVariant</item>
+        <item name="boxBackgroundColor">?attr/colorOnBackground</item>
+    </style>
+    <style name="InputLayout.Name">
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">25</item>
+    </style>
+
+
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
+        <item name="colorControlActivated">?attr/colorPrimaryVariant</item>
+        <item name="colorAccent">?attr/colorPrimaryVariant</item>
+    </style>
+
+
+    <style name="EditText">
+        <item name="android:textAppearance">@style/Text</item>
+        <item name="android:textColorHighlight">?attr/colorPrimaryVariant</item>
+        <item name="paddingStart">10dp</item>
+        <item name="paddingEnd">10dp</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
+    </style>
+    <!--Money exchange fields-->
+    <style name="EditText.Number">
+        <item name="android:inputType">numberDecimal</item>
+    </style>
+    <!--Name and surname fields-->
+    <style name="EditText.Name">
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:maxLength">25</item>
+        <item name="android:digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</item>
+    </style>
+
+    <style name="CardView">
+        <item name="cardElevation">5dp</item>
+    </style>
+    <style name="CardView.MainCard">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    <style name="CardView.TransactionCard">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="@dimen/card_transaction_width"
+    android:layout_height="@dimen/card_transaction_height"
+    tools:cardBackgroundColor="@color/black"
+    style="@style/CardView.TransactionCard"
+    app:strokeColor="@color/black"
+    android:layout_margin="10dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/card_bank_name"
+            style="@style/TextView.CardTransaction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/bank_name"
+            app:layout_constraintBottom_toTopOf="@id/card_balance_title"
+            app:layout_constraintEnd_toStartOf="@id/card_payment_system"
+            app:layout_constraintHeight_default="wrap"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintWidth_default="wrap" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/card_payment_system"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_visa"
+            app:layout_constraintBottom_toBottomOf="@+id/card_bank_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="wrap"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/card_bank_name"
+            app:layout_constraintWidth_default="wrap" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/card_logo"
+            android:layout_width="@dimen/card_transaction_flag_logo"
+            android:layout_height="@dimen/card_transaction_flag_logo"
+            android:src="@drawable/ic_us"
+            app:layout_constraintEnd_toEndOf="@id/card_payment_system"
+            app:layout_constraintStart_toStartOf="@id/card_payment_system"
+            app:layout_constraintBottom_toTopOf="@id/card_balance_title"
+            app:layout_constraintWidth_default="wrap" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/card_balance_title"
+            style="@style/TextView.CardTransaction.BalanceTitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/balance_title"
+            app:layout_constraintBottom_toTopOf="@id/card_balance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="wrap"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/card_bank_name"
+            app:layout_constraintWidth_default="wrap" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/card_balance"
+            style="@style/TextView.CardTransaction.Balance"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/card_payment_system"
+            app:layout_constraintHeight_default="wrap"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/card_balance_title"
+            app:layout_constraintWidth_default="wrap"
+            tools:text="1,023,00.23 \u0024" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

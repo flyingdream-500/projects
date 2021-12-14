@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Fragments Project II</string>
+
+    <string name="add">add</string>
+    <string name="remove">remove</string>
+    <string name="replace">replace</string>
+    <string name="add_to_backstack">add to backstack</string>
+
+    <string name="stacked_count">Stack fragments count: %1$s</string>
+    <string name="added_count">Added fragments count: %1$s</string>
+</resources>

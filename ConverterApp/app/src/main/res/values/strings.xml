@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">ConverterApp</string>
+
+    <string name="quantity">Величина</string>
+    <string name="quantity_length">Длина</string>
+
+    <string name="unit_millimeter">mm</string>
+    <string name="unit_millimeter_description">Миллиметр</string>
+    <string name="unit_centimeter">sm</string>
+    <string name="unit_centimeter_description">Сантиметр</string>
+    <string name="unit_meter">m</string>
+    <string name="unit_meter_description">Метр</string>
+    <string name="unit_kilometer">km</string>
+    <string name="unit_kilometer_description">Километр</string>
+
+    <string name="quantity_area">Площадь</string>
+
+    <string name="unit_sq_millimeter">mm\u00B2</string>
+    <string name="unit_sq_millimeter_description">Квадратный\nмиллиметр</string>
+    <string name="unit_sq_centimeter">sm\u00B2</string>
+    <string name="unit_sq_centimeter_description">Квадратный\nсантиметр</string>
+    <string name="unit_sq_meter">m\u00B2</string>
+    <string name="unit_sq_meter_description">Квадратный\nметр</string>
+    <string name="unit_sq_kilometer">km\u00B2</string>
+    <string name="unit_sq_kilometer_description">Квадратный\nкилометр</string>
+
+    <string name="quantity_volume">Объем</string>
+
+    <string name="unit_qb_millimeter">mm\u00B3</string>
+    <string name="unit_qb_millimeter_description">Кубический\nмиллиметр</string>
+    <string name="unit_qb_centimeter">sm\u00B3</string>
+    <string name="unit_qb_centimeter_description">Кубический\nсантиметр</string>
+    <string name="unit_qb_meter">m\u00B3</string>
+    <string name="unit_qb_meter_description">Кубический\nметр</string>
+    <string name="unit_qb_kilometer">km\u00B3</string>
+    <string name="unit_qb_kilometer_description">Кубический\nкилометр</string>
+</resources>

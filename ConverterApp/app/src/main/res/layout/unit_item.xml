@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <TextView
+        android:id="@+id/unit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        style="@style/UnitLabelStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/unit_qb_millimeter"
+        />
+
+    <TextView
+        android:id="@+id/unit_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/UnitDescriptionLabelStyle"
+        app:layout_constraintStart_toStartOf="@id/unit_name"
+        app:layout_constraintTop_toBottomOf="@id/unit_name"
+        tools:text="@string/unit_qb_millimeter_description"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="unit_name, unit_description"
+        />
+
+
+    <EditText
+        android:id="@+id/unit_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="10dp"
+        style="@style/UnitValueInputStyle"
+        app:layout_constraintTop_toTopOf="@id/unit_name"
+        app:layout_constraintBottom_toBottomOf="@id/unit_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        tools:text="100.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

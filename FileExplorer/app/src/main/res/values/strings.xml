@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">File Explorer</string>
+    <string name="no_files">Empty folder</string>
+    <string name="file_count">Files: %1$d</string>
+</resources>

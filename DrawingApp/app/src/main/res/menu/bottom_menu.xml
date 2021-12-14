@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/brush"
+        android:icon="@drawable/ic_brush"
+        android:title="@string/brush"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/line"
+        android:icon="@drawable/ic_vector"
+        android:title="@string/line"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/rectangle"
+        android:icon="@drawable/ic_rectangle"
+        android:title="@string/rectangle"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/scale"
+        android:icon="@drawable/ic_scale"
+        android:title="@string/scale"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/pick_color"
+        android:icon="@drawable/ic_pick_color"
+        android:title="@string/pick_color"
+        app:showAsAction="ifRoom"/>
+
+</menu>

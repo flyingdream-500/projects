@@ -1,0 +1,20 @@
+<resources>
+    <string name="main_activity_name">MainActivity</string>
+    <string name="deeplink_activity_name">DeepLinkActivity</string>
+    <string name="link_activity_name">LinkActivity</string>
+    <string name="app_name">DeepLinkApp</string>
+
+    <!--main activity strings-->
+    <string name="hint_name">Name</string>
+    <string name="hint_surname">Surname</string>
+    <string name="hint_date">Select Date</string>
+
+    <string name="main_description_above">Fill in the fields to create extra data for deep link:</string>
+    <string name="main_description_below">Click the link:</string>
+    <string name="main_deep_link">app://launch?%4$s=%1$s&amp;%5$s=%2$s&amp;%6$s=%3$s</string>
+
+    <!--deeplink activity strings-->
+    <string name="deep_link_info">Name: %1$s\nSurname: %2$s\nDate of Birth: %3$s</string>
+
+    <string name="link_error">"Error message: %1$s</string>
+</resources>

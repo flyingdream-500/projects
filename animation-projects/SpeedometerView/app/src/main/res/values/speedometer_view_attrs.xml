@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpeedometerView">
+        <attr name="panelColor" format="color" />
+
+        <attr name="arcGradientStart" format="color" />
+        <attr name="arcGradientCenter" format="color" />
+        <attr name="arcGradientEnd" format="color" />
+
+        <attr name="firstLayerGradientStart" format="color" />
+        <attr name="firstLayerGradientCenter" format="color" />
+        <attr name="firstLayerGradientEnd" format="color" />
+
+        <attr name="secondLayerGradientStart" format="color" />
+        <attr name="secondLayerGradientCenter" format="color" />
+        <attr name="secondLayerGradientEnd" format="color" />
+
+        <attr name="thirdLayerColor" format="color" />
+        <attr name="fourthLayerColor" format="color" />
+
+        <attr name="halfRadiusCircleColor" format="color" />
+        <attr name="centralCircleColor" format="color" />
+
+        <attr name="arrowColor" format="color" />
+        <attr name="arrowStrokeColor" format="color" />
+
+        <attr name="markColor" format="color" />
+        <attr name="doubleMarkColor" format="color" />
+
+        <attr name="numbersColor" format="color" />
+        <attr name="logoColor" format="color" />
+        <attr name="currentSpeed" format="integer" />
+        <attr name="maxSpeed" format="integer" />
+
+    </declare-styleable>
+
+    <attr name="speedometerDefaultAttr" format="reference" />
+</resources>

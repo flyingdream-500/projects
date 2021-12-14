@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SpeedometerViewDefaultStyle">
+        <item name="panelColor">@color/black</item>
+
+        <item name="arcGradientStart">@color/green</item>
+        <item name="arcGradientCenter">@color/yellowish</item>
+        <item name="arcGradientEnd">@color/red</item>
+
+        <item name="firstLayerGradientStart">@color/red</item>
+        <item name="firstLayerGradientCenter">@color/gray</item>
+        <item name="firstLayerGradientEnd">@color/black</item>
+
+        <item name="secondLayerGradientStart">@color/black</item>
+        <item name="secondLayerGradientCenter">@color/gray</item>
+        <item name="secondLayerGradientEnd">@color/black</item>
+
+        <item name="thirdLayerColor">@color/black</item>
+        <item name="fourthLayerColor">@color/white</item>
+
+        <item name="halfRadiusCircleColor">@color/white</item>
+        <item name="centralCircleColor">@color/white</item>
+
+        <item name="arrowColor">@color/red</item>
+        <item name="arrowStrokeColor">@color/white</item>
+
+        <item name="markColor">@color/white</item>
+        <item name="doubleMarkColor">@color/white</item>
+
+        <item name="numbersColor">@color/white</item>
+        <item name="logoColor">@color/white</item>
+        <item name="currentSpeed">0</item>
+        <item name="maxSpeed">300</item>
+    </style>
+</resources>

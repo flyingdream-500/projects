@@ -1,10 +1,10 @@
-package com.example.neworkrequestsproject.data
+package com.example.networkrequestsproject.data
 
-import com.example.neworkrequestsproject.data.converter.UserConverter
-import com.example.neworkrequestsproject.domain.UserRepository
-import com.example.neworkrequestsproject.domain.model.PageOfUsers
-import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.data.converter.UserConverter
+import com.example.networkrequestsproject.domain.UserRepository
+import com.example.networkrequestsproject.domain.model.PageOfUsers
+import com.example.networkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.domain.model.User
 
 abstract class BaseUserRepository(private val converter: UserConverter) : UserRepository {
 

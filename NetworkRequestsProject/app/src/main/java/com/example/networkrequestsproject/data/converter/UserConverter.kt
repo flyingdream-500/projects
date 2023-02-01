@@ -1,7 +1,7 @@
-package com.example.neworkrequestsproject.data.converter
+package com.example.networkrequestsproject.data.converter
 
-import com.example.neworkrequestsproject.domain.model.PageOfUsers
-import com.example.neworkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.domain.model.PageOfUsers
+import com.example.networkrequestsproject.domain.model.Person
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

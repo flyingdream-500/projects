@@ -1,12 +1,11 @@
-package com.example.neworkrequestsproject.presentation
+package com.example.networkrequestsproject.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.neworkrequestsproject.domain.UserInteract
-import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.domain.UserInteract
+import com.example.networkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.domain.model.User
 import okio.IOException
 import java.util.concurrent.Executors
 

@@ -1,20 +1,20 @@
-package com.example.neworkrequestsproject.presentation
+package com.example.networkrequestsproject.presentation
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.neworkrequestsproject.R
-import com.example.neworkrequestsproject.data.BaseUserRepository
-import com.example.neworkrequestsproject.data.OkHttpUserRepository
-import com.example.neworkrequestsproject.data.converter.UserConverter
-import com.example.neworkrequestsproject.databinding.ActivityMainBinding
-import com.example.neworkrequestsproject.domain.UserInteract
-import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.presentation.utils.Extensions.observeError
-import com.example.neworkrequestsproject.presentation.utils.Extensions.observePost
-import com.example.neworkrequestsproject.presentation.utils.Extensions.observeUsers
+import com.example.networkrequestsproject.R
+import com.example.networkrequestsproject.data.BaseUserRepository
+import com.example.networkrequestsproject.data.OkHttpUserRepository
+import com.example.networkrequestsproject.data.converter.UserConverter
+import com.example.networkrequestsproject.databinding.ActivityMainBinding
+import com.example.networkrequestsproject.domain.UserInteract
+import com.example.networkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.presentation.utils.Extensions.observeError
+import com.example.networkrequestsproject.presentation.utils.Extensions.observePost
+import com.example.networkrequestsproject.presentation.utils.Extensions.observeUsers
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

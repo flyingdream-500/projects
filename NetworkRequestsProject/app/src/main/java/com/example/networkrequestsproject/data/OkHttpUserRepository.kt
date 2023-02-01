@@ -1,8 +1,8 @@
-package com.example.neworkrequestsproject.data
+package com.example.networkrequestsproject.data
 
-import com.example.neworkrequestsproject.data.converter.UserConverter
-import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.data.converter.UserConverter
+import com.example.networkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.domain.model.User
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request

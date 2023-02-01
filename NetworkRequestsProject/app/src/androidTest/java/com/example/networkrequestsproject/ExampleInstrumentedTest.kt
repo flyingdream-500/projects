@@ -1,4 +1,4 @@
-package com.example.neworkrequestsproject
+package com.example.networkrequestsproject
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

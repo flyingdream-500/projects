@@ -1,4 +1,4 @@
-package com.example.neworkrequestsproject.domain.model
+package com.example.networkrequestsproject.domain.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

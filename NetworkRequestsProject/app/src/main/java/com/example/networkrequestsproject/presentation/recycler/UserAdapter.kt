@@ -1,8 +1,8 @@
-package com.example.neworkrequestsproject.presentation.recycler
+package com.example.networkrequestsproject.presentation.recycler
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.domain.model.User
 
 class UserAdapter(private val users: List<User>) : RecyclerView.Adapter<UserViewHolder>() {
 

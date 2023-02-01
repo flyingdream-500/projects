@@ -1,12 +1,12 @@
-package com.example.neworkrequestsproject.presentation.recycler
+package com.example.networkrequestsproject.presentation.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.neworkrequestsproject.R
-import com.example.neworkrequestsproject.databinding.UserItemBinding
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.R
+import com.example.networkrequestsproject.databinding.UserItemBinding
+import com.example.networkrequestsproject.domain.model.User
 
 class UserViewHolder(private val binding: UserItemBinding) : RecyclerView.ViewHolder(binding.root) {
 

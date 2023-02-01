@@ -1,10 +1,10 @@
-package com.example.neworkrequestsproject.presentation.utils
+package com.example.networkrequestsproject.presentation.utils
 
 import android.view.View
-import com.example.neworkrequestsproject.R
-import com.example.neworkrequestsproject.databinding.ActivityMainBinding
-import com.example.neworkrequestsproject.domain.model.User
-import com.example.neworkrequestsproject.presentation.recycler.UserAdapter
+import com.example.networkrequestsproject.R
+import com.example.networkrequestsproject.databinding.ActivityMainBinding
+import com.example.networkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.presentation.recycler.UserAdapter
 
 object Extensions {
 

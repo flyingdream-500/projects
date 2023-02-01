@@ -1,8 +1,8 @@
-package com.example.neworkrequestsproject.domain
+package com.example.networkrequestsproject.domain
 
-import com.example.neworkrequestsproject.data.BaseUserRepository
-import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.data.BaseUserRepository
+import com.example.networkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.domain.model.User
 
 class UserInteract(private val repository: BaseUserRepository) {
 

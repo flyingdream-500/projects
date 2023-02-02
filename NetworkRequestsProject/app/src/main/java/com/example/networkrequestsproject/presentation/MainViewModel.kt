@@ -3,15 +3,15 @@ package com.example.networkrequestsproject.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.networkrequestsproject.data.common.ApiResult
 import com.example.networkrequestsproject.domain.UserInteract
 import com.example.networkrequestsproject.domain.model.Person
 import com.example.networkrequestsproject.domain.model.User
+import kotlinx.coroutines.launch
 import okio.IOException
-import java.util.concurrent.Executors
 
 class MainViewModel(private val interact: UserInteract) : ViewModel() {
-
-    private val executorService = Executors.newSingleThreadExecutor()
 
     private val errorLiveData = MutableLiveData<String>()
     private val postLiveData = MutableLiveData<String>()
@@ -22,33 +22,28 @@ class MainViewModel(private val interact: UserInteract) : ViewModel() {
     fun getUsersData(): LiveData<List<User>> = usersLiveData
 
     fun getUsers() {
-        executorService.submit {
+        viewModelScope.launch {
             try {
-                val usersList = interact.getList()
-                usersList?.let {
-                    usersLiveData.postValue(it)
+                when (val usersList = interact.getList()) {
+                    is ApiResult.Success -> usersLiveData.value = usersList.data ?: emptyList()
+                    is ApiResult.Error -> errorLiveData.value = usersList.exception.message
                 }
             } catch (e: IOException) {
-                errorLiveData.postValue(e.message)
+                errorLiveData.value = e.message
             }
         }
     }
 
     fun postPerson(person: Person) {
-        executorService.submit {
+        viewModelScope.launch {
             try {
-                val response = interact.postPerson(person)
-                response?.let {
-                    postLiveData.postValue(it)
+                when (val response = interact.postPerson(person)) {
+                    is ApiResult.Success -> postLiveData.value = response.data ?: ""
+                    is ApiResult.Error -> errorLiveData.value = response.exception.message
                 }
             } catch (e: IOException) {
-                errorLiveData.postValue(e.message)
+                errorLiveData.value = e.message
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        executorService.shutdownNow()
     }
 }

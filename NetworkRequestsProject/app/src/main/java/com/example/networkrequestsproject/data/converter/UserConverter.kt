@@ -3,8 +3,10 @@ package com.example.networkrequestsproject.data.converter
 import com.example.networkrequestsproject.domain.model.PageOfUsers
 import com.example.networkrequestsproject.domain.model.Person
 import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlin.Throws
 
 class UserConverter {
 
@@ -23,6 +25,7 @@ class UserConverter {
         return personJsonAdapter?.toJson(person)
     }
 
+    @Throws(JsonDataException::class)
     fun convertToList(pageOfList: String): PageOfUsers? {
         return listUserJsonAdapter?.fromJson(pageOfList)
     }

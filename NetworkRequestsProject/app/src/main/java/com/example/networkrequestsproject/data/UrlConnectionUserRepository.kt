@@ -9,10 +9,11 @@ import java.net.URL
 import java.nio.charset.StandardCharsets
 import javax.net.ssl.HttpsURLConnection
 
+/*
 class UrlConnectionUserRepository(converter: UserConverter) : BaseUserRepository(converter) {
 
 
-    override fun postPerson(person: Person): String {
+    override suspend fun postPerson(person: Person): String {
         val requestUrl = URL(REQUEST_URL_POST)
         val urlConnection = requestUrl.openConnection() as HttpsURLConnection
         urlConnection.apply {
@@ -36,7 +37,7 @@ class UrlConnectionUserRepository(converter: UserConverter) : BaseUserRepository
     }
 
 
-    override fun getUsers(): List<User>? {
+    override suspend fun getUsers(): List<User>? {
         val requestUrl = URL(REQUEST_URL)
         val urlConnection = requestUrl.openConnection() as HttpsURLConnection
         urlConnection.apply {
@@ -54,4 +55,4 @@ class UrlConnectionUserRepository(converter: UserConverter) : BaseUserRepository
 
     }
 
-}
+}*/

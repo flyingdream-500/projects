@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.neworkrequestsproject">
+    package="com.example.networkrequestsproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,9 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/network"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NeworkRequestsProject">
+        android:theme="@style/Theme.NetworkRequestsProject">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name="com.example.networkrequestsproject.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

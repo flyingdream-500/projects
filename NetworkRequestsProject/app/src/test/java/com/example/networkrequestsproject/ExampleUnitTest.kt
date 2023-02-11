@@ -1,4 +1,4 @@
-package com.example.neworkrequestsproject
+package com.example.networkrequestsproject
 
 import org.junit.Test
 

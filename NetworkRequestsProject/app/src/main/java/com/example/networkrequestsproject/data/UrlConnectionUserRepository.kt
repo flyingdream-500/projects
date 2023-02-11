@@ -1,18 +1,19 @@
-package com.example.neworkrequestsproject.data
+package com.example.networkrequestsproject.data
 
-import com.example.neworkrequestsproject.data.converter.UserConverter
-import com.example.neworkrequestsproject.domain.model.Person
-import com.example.neworkrequestsproject.domain.model.User
+import com.example.networkrequestsproject.data.converter.UserConverter
+import com.example.networkrequestsproject.domain.model.Person
+import com.example.networkrequestsproject.domain.model.User
 import okio.IOException
 import java.io.OutputStreamWriter
 import java.net.URL
 import java.nio.charset.StandardCharsets
 import javax.net.ssl.HttpsURLConnection
 
+/*
 class UrlConnectionUserRepository(converter: UserConverter) : BaseUserRepository(converter) {
 
 
-    override fun postPerson(person: Person): String {
+    override suspend fun postPerson(person: Person): String {
         val requestUrl = URL(REQUEST_URL_POST)
         val urlConnection = requestUrl.openConnection() as HttpsURLConnection
         urlConnection.apply {
@@ -36,7 +37,7 @@ class UrlConnectionUserRepository(converter: UserConverter) : BaseUserRepository
     }
 
 
-    override fun getUsers(): List<User>? {
+    override suspend fun getUsers(): List<User>? {
         val requestUrl = URL(REQUEST_URL)
         val urlConnection = requestUrl.openConnection() as HttpsURLConnection
         urlConnection.apply {
@@ -54,4 +55,4 @@ class UrlConnectionUserRepository(converter: UserConverter) : BaseUserRepository
 
     }
 
-}
+}*/
